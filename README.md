@@ -1,1 +1,0 @@
-Github page of Unifying Appearance Codes and Bilateral Grids for Driving Scene Gaussian Splatting.
