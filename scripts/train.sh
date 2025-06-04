@@ -1,28 +1,24 @@
 ## gpu
 CUDA_IDX=0
 
-## need edit
-scene_idx_all=("0" "1" "2" "3" "4" "5" "6" "8" "9")
-dataset=argoverse/7cams
+## project path
+output_root="code/bilateral-driving/output"
+project_root="code/bilateral-driving"
+data_root="your data root"
+
+## dataset config
+scene_idx_all=("152" "164" "171" "200" "209" "359" "529" "916")
+dataset=nuscenes/6cams
 config_file=configs/omnire_ms_bilateral_extended.yaml
 
 start_timestep=0
 end_timestep=-1
 test_image_stride=10
 load_smpl=False
-# output_root=/baai-cwm-1/baai_cwm_ml/algorithm/nan.wang/code/drivestudio/output/nuscenes_6cams/ablation/littletv
-output_root="your output path"
-# project_root=/baai-cwm-1/baai_cwm_ml/algorithm/nan.wang/code/bilateraldriving_0211/ablation-0305/notv
-project_root="your project path"
-# data_root=/baai-cwm-1/baai_cwm_ml/algorithm/nan.wang/processed_data/drivestudio/nuscenes/processed_10Hz/trainval
-data_root="your data root"
 
+## train
 cd $project_root
 export PYTHONPATH=$(pwd)
-# export TORCH_HOME=/baai-cwm-1/baai_cwm_ml/algorithm/nan.wang/.cache/torch
-# export conda_env=/baai-cwm-1/baai_cwm_ml/algorithm/nan.wang/miniconda3/envs/bilateraldriving/bin/python
-
-
 for scene_idx in "${scene_idx_all[@]}"; do
     CUDA_VISIBLE_DEVICES=$CUDA_IDX python tools/train.py \
         --config_file $config_file \

@@ -8,10 +8,7 @@ smpl_models/
 # self added
 fig
 output
-third_party/gsplat-1.3.0
-third_party/nvdiffrast-main
-third_party/pytorch3d-main
-third_party/Humans4D
+project/third_party/*
 data/waymo
 data/pandaset
 data/argoverse
@@ -32,7 +29,7 @@ method_compare/
 simulated_results/
 sky_masks/
 fine_dynamic_masks_example/
-*.sh
+# *.sh
 pandaset-devkit/
 
 # C extensions
