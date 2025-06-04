@@ -1,5 +1,8 @@
+google-drive*
+rclone*
 # Byte-compiled / optimized / DLL files
 __pycache__/
+scripts/
 *.py[cod]
 *$py.class
 smpl_models/
@@ -8,7 +11,6 @@ smpl_models/
 # self added
 fig
 output
-project/third_party/*
 data/waymo
 data/pandaset
 data/argoverse

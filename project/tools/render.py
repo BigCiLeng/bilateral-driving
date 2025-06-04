@@ -124,8 +124,7 @@ def main(args):
     cfg = OmegaConf.load(os.path.join(log_dir, "config.yaml"))
     cfg = OmegaConf.merge(cfg, OmegaConf.from_cli(args.opts))
     args.enable_wandb = False
-    for folder in ["videos_eval", "metrics_eval"]:
-        os.makedirs(os.path.join(log_dir, folder), exist_ok=True)
+    os.makedirs(os.path.join(log_dir, "videos_eval"), exist_ok=True)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     # build dataset

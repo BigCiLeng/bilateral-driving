@@ -78,7 +78,8 @@ def do_evaluation(
             with open(test_metrics_file, "w") as f:
                 json.dump(eval_dict, f)
             logger.info(f"Image evaluation metrics saved to {test_metrics_file}")
-        
+        del render_results
+        torch.cuda.empty_cache()
     if cfg.render.render_full:
         logger.info("Evaluating Full Set...")
         # trainer.models['Affine'].in_test_set = False
@@ -121,14 +122,15 @@ def do_evaluation(
             with open(full_metrics_file, "w") as f:
                 json.dump(eval_dict, f)
             logger.info(f"Image evaluation metrics saved to {full_metrics_file}")
+        del render_results
+        torch.cuda.empty_cache()
             
 def main(args):
     log_dir = os.path.dirname(args.resume_from)
     cfg = OmegaConf.load(os.path.join(log_dir, "config.yaml"))
     cfg = OmegaConf.merge(cfg, OmegaConf.from_cli(args.opts))
     args.enable_wandb = False
-    for folder in ["videos_eval", "metrics_eval"]:
-        os.makedirs(os.path.join(log_dir, folder), exist_ok=True)
+    os.makedirs(os.path.join(log_dir, "metrics_eval"), exist_ok=True)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     # build dataset

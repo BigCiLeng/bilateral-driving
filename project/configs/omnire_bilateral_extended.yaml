@@ -250,11 +250,8 @@ model:
       grid_W: 8
     optim:
       all:
-        lr: 2.0e-3
-        lr_final: 1e-4
-        warmup_steps: 1000
-        lr_pre_warmup: 0
-        # weight_decay: 1.0e-6
+        lr: 1.0e-5
+        weight_decay: 1.0e-6
   CamPose:
     type: models.modules.CameraOptModule
     optim:
