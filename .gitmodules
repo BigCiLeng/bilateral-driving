@@ -1,0 +1,3 @@
+[submodule "project/third_party/Humans4D"]
+	path = project/third_party/Humans4D
+	url = https://github.com/shubham-goel/4D-Humans.git
