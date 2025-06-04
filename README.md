@@ -35,10 +35,9 @@ We introduced Multi-Scale Bilateral Grids that unifies appearance codes and bila
 
 - [Environment Setup](#environment-setup)
 - [Dataset Preparation](#Dataset-Preparation)
-- [Evaluate the Pre-train Model](#evaluate-the-pre-train-model)
+- [Evaluate the Pre-trained Model](#evaluate-the-pre-trained-models)
 - [Train Your Model](#train-your-model)
-- [Run Radar Simulation](#run-radar-simulation)
-- [Downstream Tasks](#downstream-tasks)
+- [Data](#data)
 
 ### Environment Setup
 
@@ -70,7 +69,7 @@ cd ../..
 
 ### Dataset Preparation
 
-You can download our preprocessed nuScenes data from [GoogleDrive]() for quick start.
+You can download our preprocessed [nuScenes](#data) data for quick start.
 
 Download the dataset and arrange it as the following directory tree,
 ```bash
@@ -101,17 +100,17 @@ or following the same data preprocessing pipeline from [drivestudio](https://git
 
 </details>
 
-### Evaluate the pre-train models
-```python
-python tools/eval_chamfer.py \
-    --resume_from $output_root/checkpoint_final.pth \
-    render.render_test=False
-```
 
 ### Train your model
 
+
+#### train scripts
+```bash
+bash scripts/train.sh
+```
+
 #### train a single scene
-```python
+```bash
 python tools/train.py \
     --config_file configs/omnire_ms_bilateral.yaml \
     --output_root $output_root \
@@ -123,6 +122,21 @@ python tools/train.py \
     data.end_timestep=$end_timestep
 ```
 
+### Evaluate the pre-trained models
+Download the pre-trained model [checkpoints](#data).
+```bash
+python tools/eval_chamfer.py \
+    --resume_from $output_root/checkpoint_final.pth \
+    render.render_test=False
+```
+
+### Data
+
+|||
+|---------|-------------|
+| Pre-trained checkpoints  | [Google Drive](docs/Waymo.md) |
+| Pre-processed dataset | [Google Drive](docs/NuScenes.md) |
+
 # 🤝 Citation
 
 If you find this repository helpful, please consider citing our paper:
@@ -130,3 +144,6 @@ If you find this repository helpful, please consider citing our paper:
 ```bibtex
 todo
 ```
+
+# 🙏🏿 Acknowledge
+Thansk for these excellent open-source works and models: [DriveStudio](https://github.com/ziyc/drivestudio); [Bilarf](https://github.com/yuehaowang/bilarf); [Street Gaussians](https://github.com/zju3dv/street_gaussians);.
