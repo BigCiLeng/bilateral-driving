@@ -2,7 +2,7 @@
  * @Author: BigCiLeng && bigcileng@outlook.com
  * @Date: 2025-05-06 04:41:05
  * @LastEditors: BigCiLeng && bigcileng@outlook.com
- * @LastEditTime: 2025-06-05 21:41:40
+ * @LastEditTime: 2025-06-05 23:33:05
  * @FilePath: \bilateraldriving-supplementary-material\index.html
  * @Description: 
  * 
@@ -166,9 +166,10 @@
                   <h3>Table of Contents</h3>
                   <ul style="list-style-type: none; padding: 0;">
                     <!-- <li><a href="#banner">Introductory Video</a></li> -->
+                    <!-- <li><a href="#banner">Teaser</a></li> -->
                     <li><a href="#abstract">Abstract</a></li>
+                    <li><a href="#framework">Framework</a></li>
                     <li><a href="#video_gallery_1_title">Video Demos</a></li>
-                    <li><a href="#text_supp">Textual Supplementary Material</a></li>
                   </ul>
                 </div>
 
@@ -183,22 +184,31 @@
   <section class="hero teaser">
     <div class="container is-max-desktop">
       <div class="hero-body">
+
         <div class="columns is-centered has-text-centered">
           <div class="column is-full-width">
-        
-            <video class="video" id="banner" loop playsinline autoplay muted src="static/videos/teaser.mp4" onplay="resizeAndPlay3(this)" ></video>
-            <canvas height=0 class="videoMerge" id="bannerMerge3"></canvas>
-        
             <h2 class="subtitle has-text-centered" style="margin-top: 15px">
               <b>TL;DR</b>: we introduced Multi-Scale Bilateral Grids that unifies appearance codes and bilateral grids, significantly improves geometric accuracy in dynamic, decoupled autonomous driving scene reconstruction.
             </h2>
+            <img src="static/images/paradigm.png" class="column is-2.7 has-text-centered" alt="">        
           </div>
         </div>
       </div>
     </div>
   </section>
 
-
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-full-width">
+            <video class="video" id="banner" loop playsinline autoplay muted src="static/videos/teaser.mp4" onplay="resizeAndPlay3(this)" ></video>
+            <canvas height=0 class="videoMerge" id="bannerMerge3"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Paper abstract -->
   <section class="section hero is-light" id="abstract">
@@ -217,17 +227,37 @@
   </section>
   <!-- End paper abstract -->
 
+  <section clas="hero is-large" id="video_gallery_1_title" id="framework">
+    <div class="container" style="width: 100vw;">
+      <br><br>
+      <h2 class="title is-3 has-text-centered">Framework</h2>
+    </div>
+  </section>
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-full-width">
+            <img src="static/images/framework.png" class="column is-2.7 has-text-centered" alt="">   
+            <h2 class="subtitle has-text-centered" style="margin-top: 15px">
+              We unify appearance codes with multi-scale bilateral grids. Initially, a coarse rendering is obtained from a Gaussian scene graph. This rendered image is then processed by our multi-scale bilateral grids to perform detailed per-pixel color modeling, guided by a luminance-based map through slice and fusion operations.
+            </h2>     
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
   <section clas="hero is-large" id="video_gallery_1_title">
     <div class="container" style="width: 100vw;">
       <br>
       <h2 class="title is-3 has-text-centered">Video Demos</h2>
-      <br>
       <h4 class="subtitle has-text-centered">
-          Rendering results comparing our method with the <strong style="color: #2980B9; font-size: 1.1em;">Baseline</strong>. <br>
-          <strong style="color: #2980B9; font-size: 1.1em;">Baseline</strong> results are reconstructed using <a href="https://ziyc.github.io/omnire/" style="font-weight: bold; color: #C0392B; font-size: 1.1em;">Omnire</a> (<strong style="color: #8E44AD;">ICLR 2025 Spotlight</strong>). <br>
-          Scenes are from <a href="https://www.nuscenes.org/" style="font-weight: bold; color: #C0392B; font-size: 1.1em;">nuScenes</a>, <a href="https://waymo.com/open/" style="font-weight: bold; color: #C0392B; font-size: 1.1em;">Waymo</a>, <a href="https://scale.com/open-av-datasets/pandaset" style="font-weight: bold; color: #C0392B; font-size: 1.1em;">PandaSet</a>, and <a href="https://www.argoverse.org/" style="font-weight: bold; color: #C0392B; font-size: 1.1em;">Argoverse</a>.
+          Rendering results comparsion.<br>
+          Baseline result are reconstructed using <a href="https://ziyc.github.io/omnire/">Omnire</a> (ICLR 2025 Spotlight). <br>
+          Scenes are from <a href="https://www.nuscenes.org/">nuScenes</a>, <a href="https://waymo.com/open/">Waymo</a>, <a href="https://scale.com/open-av-datasets/pandaset">PandaSet</a>, and <a href="https://www.argoverse.org/">Argoverse</a>.
       </h4>
-      <br>
       <p class="has-text-centered">Due to file size limitations, videos are compressed and quality might be affected.</p>
     </div>
   </section>
