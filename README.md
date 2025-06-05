@@ -166,7 +166,7 @@ python tools/render.py \
 
 |         Resources       |          Download Link           |
 |-------------------------|----------------------------------|
-| Pre-trained checkpoints | [Google Drive](/share/project/cwm/nan.wang/nan.wang/code/bilateraldriving-arxiv/google-drive-ckpts/nuscenes_pretrained_checkpoints.tar.gz) |
+| Pre-trained checkpoints | [Google Drive](https://drive.google.com/drive/folders/1TC-kHSbVpzntoBr0YoFYzQ6pRDXafs5m?usp=drive_link) |
 | Pre-processed dataset   | [Google Drive](https://drive.google.com/file/d/1NJ5bmOARlte4_kMG8yZoU8nMSMVllLZp/view?usp=drive_link) |
 
 # 🤝 Citation
