@@ -4,7 +4,7 @@
 <a href="">
   <img alt="arXiv" src="https://img.shields.io/badge/arXiv-PDF-b31b1b">
 </a>
-<a href="">
+<a href="https://bigcileng.github.io/bilateral-driving/">
     <img alt="Project Page" src="docs/media/badge-website.svg">
 </a>
 </div>
@@ -19,7 +19,7 @@ This repo contains the official code of our paper: [Unifying Appearance Codes an
 
 - June 5, 2025: Release preprocessed data and checkpoints.
 
-- June 4, 2025: Release project page.
+- June 4, 2025: Release code and project page.
 
 ## 📊 Overview
 
@@ -35,9 +35,10 @@ We introduced Multi-Scale Bilateral Grids that unifies appearance codes and bila
 
 - [Environment Setup](#environment-setup)
 - [Dataset Preparation](#Dataset-Preparation)
-- [Evaluate the Pre-trained Model](#evaluate-the-pre-trained-models)
 - [Train Your Model](#train-your-model)
-- [Data](#data)
+- [Evaluate the Pre-trained Model](#evaluate-the-pre-trained-models)
+- [Render the trained models](#render-the-trained-models)
+- [Preprocessed Data](#preprocessed-data)
 
 ### Environment Setup
 
@@ -69,7 +70,7 @@ cd ../..
 
 ### Dataset Preparation
 
-You can download our preprocessed [nuScenes](#data) data for quick start.
+You can download our preprocessed [nuScenes](#preprocessed-data) data for quick start.
 
 Download the dataset and arrange it as the following directory tree,
 ```bash
@@ -127,7 +128,7 @@ python tools/train.py \
 ```
 
 ### Evaluate the pre-trained models
-Download the pre-trained model [checkpoints](#data)  and arrange it as the following directory tree,
+Download the pre-trained model [checkpoints](#preprocessed-data)  and arrange it as the following directory tree,
 ```bash
 |-- ckpts
     |-- nuscenes_pretrained_checkpoints
@@ -156,7 +157,7 @@ python tools/render.py \
 ```
 
 
-### Data
+### Preprocessed Data
 
 |         Resources       |          Download Link           |
 |-------------------------|----------------------------------|
