@@ -164,10 +164,49 @@ python tools/render.py \
 
 ### Preprocessed Data
 
-|         Resources       |          Download Link           |
-|-------------------------|----------------------------------|
-| Pre-trained checkpoints | [Google Drive](https://drive.google.com/drive/folders/1TC-kHSbVpzntoBr0YoFYzQ6pRDXafs5m?usp=drive_link) |
-| Pre-processed dataset   | [Google Drive](https://drive.google.com/file/d/1NJ5bmOARlte4_kMG8yZoU8nMSMVllLZp/view?usp=drive_link) |
+<table>
+  <tr>
+    <th>Dataset</th>
+    <th>Resources</th>
+    <th>Download Link</th>
+  </tr>
+  <tr>
+    <td rowspan="2">nuScenes</td>
+    <td>preprocessed data</td>
+    <td><a href="https://drive.google.com/file/d/1NJ5bmOARlte4_kMG8yZoU8nMSMVllLZp/view?usp=sharing">Google Drive</a></td>
+  </tr>
+  <tr>
+    <td>pretrained models</td>
+    <td><a href="https://drive.google.com/file/d/1DdvAoBVbZ3L8zzJ7MECD7tf0-w4xmRfU/view?usp=sharing">Google Drive</a></td>
+  </tr>
+  <tr>
+    <td rowspan="2">Waymo</td>
+    <td>preprocessed data</td>
+    <td><a href="">Google Drive</a></td>
+  </tr>
+  <tr>
+    <td>pretrained models</td>
+    <td><a href="">Google Drive</a></td>
+  </tr>
+  <tr>
+    <td rowspan="2">Pandaset</td>
+    <td>preprocessed data</td>
+    <td><a href="">Google Drive</a></td>
+  </tr>
+  <tr>
+    <td>pretrained models</td>
+    <td><a href="">Google Drive</a></td>
+  </tr>
+  <tr>
+    <td rowspan="2">Argoverse</td>
+    <td>preprocessed data</td>
+    <td><a href="">Google Drive</a></td>
+  </tr>
+  <tr>
+    <td>pretrained models</td>
+    <td><a href="">Google Drive</a></td>
+  </tr>
+</table>
 
 # 🤝 Citation
 
