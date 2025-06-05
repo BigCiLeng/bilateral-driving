@@ -2,9 +2,9 @@
 CUDA_IDX=0
 
 ## project path
-output_root="code/bilateral-driving/output"
-project_root="code/bilateral-driving"
-data_root="your data root"
+output_root="../output"
+project_root="project"
+data_root="../data/nuscenes/processed_10Hz/trainval"
 
 ## dataset config
 scene_idx_all=("152" "164" "171" "200" "209" "359" "529" "916")

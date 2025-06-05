@@ -111,31 +111,57 @@ bash scripts/train.sh
 
 #### train a single scene
 ```bash
+cd project
+export PYTHONPATH=$(pwd)
 python tools/train.py \
     --config_file configs/omnire_ms_bilateral.yaml \
     --output_root $output_root \
     --project $project \
     --run_name $expname \
-    dataset=leddartech/1cams \
+    dataset=$dataset \
     data.scene_idx=$scene_idx \
     data.start_timestep=$start_timestep \
-    data.end_timestep=$end_timestep
+    data.end_timestep=$end_timestep \
+    data.pixel_source.test_image_stride=$test_image_stride \
+    data.pixel_source.load_smpl=$load_smpl
 ```
 
 ### Evaluate the pre-trained models
-Download the pre-trained model [checkpoints](#data).
+Download the pre-trained model [checkpoints](#data)  and arrange it as the following directory tree,
 ```bash
-python tools/eval_chamfer.py \
-    --resume_from $output_root/checkpoint_final.pth \
-    render.render_test=False
+|-- ckpts
+    |-- nuscenes_pretrained_checkpoints
+    |-- pandaset_pretrained_checkpoints
+    |-- waymo_pretrained_checkpoints
+    |-- argoverse_pretrained_checkpoints
+|-- data
+|-- docs
+|-- project
+...
 ```
+#### eval
+```bash
+cd project
+export PYTHONPATH=$(pwd)
+python tools/eval_metrics.py \
+    --resume_from $output_root/checkpoint_final.pth
+```
+### Render the trained models
+
+```bash
+cd project
+export PYTHONPATH=$(pwd)
+python tools/render.py \
+    --resume_from $output_root/checkpoint_final.pth
+```
+
 
 ### Data
 
-|||
-|---------|-------------|
-| Pre-trained checkpoints  | [Google Drive](docs/Waymo.md) |
-| Pre-processed dataset | [Google Drive](docs/NuScenes.md) |
+|         Resources       |          Download Link           |
+|-------------------------|----------------------------------|
+| Pre-trained checkpoints | [Google Drive](https://drive.google.com/file/d/1NJ5bmOARlte4_kMG8yZoU8nMSMVllLZp/view?usp=drive_link) |
+| Pre-processed dataset   | [Google Drive](https://drive.google.com/file/d/1NJ5bmOARlte4_kMG8yZoU8nMSMVllLZp/view?usp=drive_link) |
 
 # 🤝 Citation
 
