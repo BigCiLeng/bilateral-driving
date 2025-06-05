@@ -105,7 +105,7 @@ or following the same data preprocessing pipeline from [drivestudio](https://git
 ### Train your model
 
 
-#### train scripts
+#### training script
 ```bash
 bash scripts/train.sh
 ```
@@ -140,7 +140,12 @@ Download the pre-trained model [checkpoints](#preprocessed-data)  and arrange it
 |-- project
 ...
 ```
-#### eval
+#### evaluation script
+```bash
+bash scripts/eval.sh
+```
+
+#### Evaluate a single scene
 ```bash
 cd project
 export PYTHONPATH=$(pwd)
@@ -161,7 +166,7 @@ python tools/render.py \
 
 |         Resources       |          Download Link           |
 |-------------------------|----------------------------------|
-| Pre-trained checkpoints | [Google Drive](https://drive.google.com/file/d/1NJ5bmOARlte4_kMG8yZoU8nMSMVllLZp/view?usp=drive_link) |
+| Pre-trained checkpoints | [Google Drive](/share/project/cwm/nan.wang/nan.wang/code/bilateraldriving-arxiv/google-drive-ckpts/nuscenes_pretrained_checkpoints.tar.gz) |
 | Pre-processed dataset   | [Google Drive](https://drive.google.com/file/d/1NJ5bmOARlte4_kMG8yZoU8nMSMVllLZp/view?usp=drive_link) |
 
 # 🤝 Citation
