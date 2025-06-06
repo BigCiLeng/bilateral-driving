@@ -186,7 +186,7 @@ python tools/render.py \
   </tr>
   <tr>
     <td>pretrained models</td>
-    <td><a href="https://drive.google.com/drive/folders/1TC-kHSbVpzntoBr0YoFYzQ6pRDXafs5m?usp=sharing">Google Drive</a></td>
+    <td><a href="https://drive.google.com/file/d/1VsGftYs2-yx4_qaJDRf4rRUm92j1B1Pb/view?usp=sharing">Google Drive</a></td>
   </tr>
   <tr>
     <td rowspan="2">Pandaset</td>
