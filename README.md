@@ -1,7 +1,7 @@
 # Unifying Appearance Codes and Bilateral Grids for Driving Scene Gaussian Splatting
 
 <div align="center">
-<a href="">
+<a href="https://arxiv.org/abs/2506.05280">
   <img alt="arXiv" src="https://img.shields.io/badge/arXiv-PDF-b31b1b">
 </a>
 <a href="https://bigcileng.github.io/bilateral-driving/">
@@ -33,12 +33,22 @@ We introduced Multi-Scale Bilateral Grids that unifies appearance codes and bila
 
 ## 🚀 Table of Contents
 
-- [Environment Setup](#environment-setup)
-- [Dataset Preparation](#Dataset-Preparation)
-- [Train Your Model](#train-your-model)
-- [Evaluate the Pre-trained Model](#evaluate-the-pre-trained-models)
-- [Render the trained models](#render-the-trained-models)
-- [Preprocessed Data](#preprocessed-data)
+- [Unifying Appearance Codes and Bilateral Grids for Driving Scene Gaussian Splatting](#unifying-appearance-codes-and-bilateral-grids-for-driving-scene-gaussian-splatting)
+  - [✨ News](#-news)
+  - [📊 Overview](#-overview)
+  - [🚀 Table of Contents](#-table-of-contents)
+    - [Environment Setup](#environment-setup)
+    - [Dataset Preparation](#dataset-preparation)
+    - [Train your model](#train-your-model)
+      - [training script](#training-script)
+      - [train a single scene](#train-a-single-scene)
+    - [Evaluate the pre-trained models](#evaluate-the-pre-trained-models)
+      - [evaluation script](#evaluation-script)
+      - [Evaluate a single scene](#evaluate-a-single-scene)
+    - [Render the trained models](#render-the-trained-models)
+    - [Preprocessed Data](#preprocessed-data)
+- [🤝 Citation](#-citation)
+- [🙏🏿 Acknowledge](#-acknowledge)
 
 ### Environment Setup
 
@@ -213,7 +223,15 @@ python tools/render.py \
 If you find this repository helpful, please consider citing our paper:
 
 ```bibtex
-todo
+@misc{wang2025msbilateral,
+      title={Unifying Appearance Codes and Bilateral Grids for Driving Scene Gaussian Splatting}, 
+      author={Nan Wang and Yuantao Chen and Lixing Xiao and Weiqing Xiao and Bohan Li and Zhaoxi Chen and Chongjie Ye and Shaocong Xu and Saining Zhang and Ziyang Yan and Pierre Merriaux and Lei Lei and Tianfan Xue and Hao Zhao},
+      year={2025},
+      eprint={2506.05280},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2506.05280}, 
+}
 ```
 
 # 🙏🏿 Acknowledge
