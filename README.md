@@ -182,29 +182,29 @@ python tools/render.py \
   <tr>
     <td rowspan="2">Waymo</td>
     <td>preprocessed data</td>
-    <td><a href="">Google Drive</a></td>
+    <td><a href="https://drive.google.com/file/d/1mhuwCCJYSp7-OQcp4HE_3H6nOjvWezl8/view?usp=sharing">Google Drive</a></td>
   </tr>
   <tr>
     <td>pretrained models</td>
-    <td><a href="">Google Drive</a></td>
+    <td><a href="https://drive.google.com/drive/folders/1TC-kHSbVpzntoBr0YoFYzQ6pRDXafs5m?usp=sharing">Google Drive</a></td>
   </tr>
   <tr>
     <td rowspan="2">Pandaset</td>
     <td>preprocessed data</td>
-    <td><a href="">Google Drive</a></td>
+    <td><a href="https://drive.google.com/file/d/145UQdPjdCFrVHLpQc0ToOyQeUTrabLav/view?usp=sharing">Google Drive</a></td>
   </tr>
   <tr>
     <td>pretrained models</td>
-    <td><a href="">Google Drive</a></td>
+    <td><a href="https://drive.google.com/file/d/1uXjLi8G4Pr6s9SXJ93QWQhMSZr3ViPVr/view?usp=sharing">Google Drive</a></td>
   </tr>
   <tr>
     <td rowspan="2">Argoverse</td>
     <td>preprocessed data</td>
-    <td><a href="">Google Drive</a></td>
+    <td><a href="https://drive.google.com/file/d/1uUYxoql6GghSiW5W9BSDB6QqbJ1OsFIc/view?usp=sharing">Google Drive</a></td>
   </tr>
   <tr>
     <td>pretrained models</td>
-    <td><a href="">Google Drive</a></td>
+    <td><a href="https://drive.google.com/file/d/1ymevoPyP1pKuBr-s08MhE0DaqOpjejcM/view?usp=sharing">Google Drive</a></td>
   </tr>
 </table>
 
