@@ -179,41 +179,54 @@ python tools/render.py \
     <th>Dataset</th>
     <th>Resources</th>
     <th>Download Link</th>
+    <th>Resources</th>
+    <th>Download Link</th>
   </tr>
   <tr>
     <td rowspan="2">nuScenes</td>
-    <td>preprocessed data</td>
-    <td><a href="https://drive.google.com/file/d/1NJ5bmOARlte4_kMG8yZoU8nMSMVllLZp/view?usp=sharing">Google Drive</a></td>
+    <td rowspan="2">preprocessed data</td>
+    <td rowspan="2"><a href="https://drive.google.com/file/d/1NJ5bmOARlte4_kMG8yZoU8nMSMVllLZp/view?usp=sharing">Google Drive</a></td>
+    <td>pretrained models (3cams)</td>
+    <td><a href="https://drive.google.com/file/d/1cdGv1e8qcdi6V9-bKB293ajY-99TwUH9/view?usp=sharing">Google Drive</a></td>
   </tr>
   <tr>
-    <td>pretrained models</td>
+    <td>pretrained models (6cams)</td>
     <td><a href="https://drive.google.com/file/d/1DdvAoBVbZ3L8zzJ7MECD7tf0-w4xmRfU/view?usp=sharing">Google Drive</a></td>
   </tr>
+
   <tr>
     <td rowspan="2">Waymo</td>
-    <td>preprocessed data</td>
-    <td><a href="https://drive.google.com/file/d/1mhuwCCJYSp7-OQcp4HE_3H6nOjvWezl8/view?usp=sharing">Google Drive</a></td>
+    <td rowspan="2">preprocessed data</td>
+    <td rowspan="2"><a href="https://drive.google.com/file/d/1mhuwCCJYSp7-OQcp4HE_3H6nOjvWezl8/view?usp=sharing">Google Drive</a></td>
+    <td>pretrained models (3cams)</td>
+    <td><a href="https://drive.google.com/file/d/1pWK09ljPgRvYG2EdDqGam7qmKuUUlCp2/view?usp=sharing">Google Drive</a></td>
   </tr>
   <tr>
-    <td>pretrained models</td>
+    <td>pretrained models (5cams)</td>
     <td><a href="https://drive.google.com/file/d/1VsGftYs2-yx4_qaJDRf4rRUm92j1B1Pb/view?usp=sharing">Google Drive</a></td>
   </tr>
+
   <tr>
     <td rowspan="2">Pandaset</td>
-    <td>preprocessed data</td>
-    <td><a href="https://drive.google.com/file/d/145UQdPjdCFrVHLpQc0ToOyQeUTrabLav/view?usp=sharing">Google Drive</a></td>
+    <td rowspan="2">preprocessed data</td>
+    <td rowspan="2"><a href="https://drive.google.com/file/d/145UQdPjdCFrVHLpQc0ToOyQeUTrabLav/view?usp=sharing">Google Drive</a></td>
+    <td>pretrained models (3cams)</td>
+    <td><a href="https://drive.google.com/file/d/1USDD0frhNKMUYegexezLfH54EUy_yIE8/view?usp=sharing">Google Drive</a></td>
   </tr>
   <tr>
-    <td>pretrained models</td>
+    <td>pretrained models (6cams)</td>
     <td><a href="https://drive.google.com/file/d/1uXjLi8G4Pr6s9SXJ93QWQhMSZr3ViPVr/view?usp=sharing">Google Drive</a></td>
   </tr>
+
   <tr>
-    <td rowspan="2">Argoverse</td>
-    <td>preprocessed data</td>
-    <td><a href="https://drive.google.com/file/d/1uUYxoql6GghSiW5W9BSDB6QqbJ1OsFIc/view?usp=sharing">Google Drive</a></td>
+    <td rowspan="2">Arrgoverse</td>
+    <td rowspan="2">preprocessed data</td>
+    <td rowspan="2"><a href="https://drive.google.com/file/d/1uUYxoql6GghSiW5W9BSDB6QqbJ1OsFIc/view?usp=sharing">Google Drive</a></td>
+    <td>pretrained models (3cams)</td>
+    <td><a href="https://drive.google.com/file/d/1mMuFtx22qRQFCbZnYwX8RcMwR07ORzVi/view?usp=sharing">Google Drive</a></td>
   </tr>
   <tr>
-    <td>pretrained models</td>
+    <td>pretrained models (7cams)</td>
     <td><a href="https://drive.google.com/file/d/1ymevoPyP1pKuBr-s08MhE0DaqOpjejcM/view?usp=sharing">Google Drive</a></td>
   </tr>
 </table>
