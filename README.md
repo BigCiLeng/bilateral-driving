@@ -73,9 +73,8 @@ pip install git+https://github.com/facebookresearch/pytorch3d.git
 pip install git+https://github.com/NVlabs/nvdiffrast
 
 ## third party
-cd third_party/smplx/
+cd project/third_party/smplx/
 pip install -e .
-cd ../..
 ```
 
 ### Dataset Preparation
