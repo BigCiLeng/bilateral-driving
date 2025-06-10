@@ -1,13 +1,20 @@
+<!--
+ * @Author: BigCiLeng && bigcileng@outlook.com
+ * @Date: 2025-06-09 18:29:10
+ * @LastEditors: BigCiLeng && bigcileng@outlook.com
+ * @LastEditTime: 2025-06-10 12:55:06
+ * @FilePath: \bilateraldriving-supplementary-material\README.md
+ * @Description: 
+ * 
+ * Copyright (c) 2023 by bigcileng@outlook.com, All Rights Reserved. 
+-->
 If you find this repository helpful, please consider citing our paper:
 
 ```bibtex
-@misc{wang2025msbilateral,
-      title={Unifying Appearance Codes and Bilateral Grids for Driving Scene Gaussian Splatting}, 
-      author={Nan Wang and Yuantao Chen and Lixing Xiao and Weiqing Xiao and Bohan Li and Zhaoxi Chen and Chongjie Ye and Shaocong Xu and Saining Zhang and Ziyang Yan and Pierre Merriaux and Lei Lei and Tianfan Xue and Hao Zhao},
-      year={2025},
-      eprint={2506.05280},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV},
-      url={https://arxiv.org/abs/2506.05280}, 
+@article{wang2025unifying,
+  title={Unifying Appearance Codes and Bilateral Grids for Driving Scene Gaussian Splatting},
+  author={Wang, Nan and Chen, Yuantao and Xiao, Lixing and Xiao, Weiqing and Li, Bohan and Chen, Zhaoxi and Ye, Chongjie and Xu, Shaocong and Zhang, Saining and Yan, Ziyang and others},
+  journal={arXiv preprint arXiv:2506.05280},
+  year={2025}
 }
 ```
