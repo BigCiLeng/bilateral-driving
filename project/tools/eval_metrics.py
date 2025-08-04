@@ -35,7 +35,8 @@ def do_evaluation(
     trainer.set_eval()
 
     logger.info("Evaluating Pixels...")
-    trainer.models['Affine'].training_indices_for_test = dataset.training_indices_for_test
+    if 'Affine' in trainer.models:
+        trainer.models['Affine'].training_indices_for_test = dataset.training_indices_for_test
     if dataset.test_image_set is not None and cfg.render.render_test:
         logger.info("Evaluating Test Set Pixels...")
         # trainer.models['Affine'].in_test_set = True
