@@ -188,7 +188,8 @@ def main(args):
     #     render_keys=render_keys,
     #     args=args,
     # )
-    trainer.models['Affine'].training_indices_for_test = dataset.training_indices_for_test
+    if 'Affine' in trainer.models:
+        trainer.models['Affine'].training_indices_for_test = dataset.training_indices_for_test
     for step in metric_logger.log_every(all_iters, cfg.logging.print_freq):
         #----------------------------------------------------------------------------
         #----------------------------     Validate     ------------------------------
