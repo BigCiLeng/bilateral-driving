@@ -13,241 +13,593 @@
 
 <head>
   <meta charset="utf-8">
-  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
-  <!-- Replace the content tag with appropriate information -->
-  <meta name="description" content="DESCRIPTION META TAG">
-  <meta property="og:title" content="SOCIAL MEDIA TITLE TAG" />
-  <meta property="og:description" content="SOCIAL MEDIA DESCRIPTION TAG TAG" />
-  <meta property="og:url" content="URL OF THE WEBSITE" />
-  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
-  <meta property="og:image" content="static/image/your_banner_image.png" />
+  <meta name="description" content="Unifying Appearance Codes and Bilateral Grids for Driving Scene Gaussian Splatting - NeurIPS 2025">
+  <meta property="og:title" content="Unifying Appearance Codes and Bilateral Grids for Driving Scene Gaussian Splatting" />
+  <meta property="og:description" content="A novel multi-scale bilateral grid that unifies appearance codes and bilateral grids for improved geometric accuracy in autonomous driving scene reconstruction." />
+  <meta property="og:url" content="https://bigcileng.github.io/bilateral-driving/" />
+  <meta property="og:image" content="static/images/paradigm.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
 
-
-  <meta name="twitter:title" content="TWITTER BANNER TITLE META TAG">
-  <meta name="twitter:description" content="TWITTER BANNER DESCRIPTION META TAG">
-  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
-  <meta name="twitter:image" content="static/images/your_twitter_banner_image.png">
+  <meta name="twitter:title" content="Unifying Appearance Codes and Bilateral Grids for Driving Scene Gaussian Splatting">
+  <meta name="twitter:description" content="A novel multi-scale bilateral grid that unifies appearance codes and bilateral grids for improved geometric accuracy in autonomous driving scene reconstruction.">
+  <meta name="twitter:image" content="static/images/paradigm.png">
   <meta name="twitter:card" content="summary_large_image">
-  <!-- Keywords for your paper to be indexed by-->
-  <meta name="keywords" content="KEYWORDS SHOULD BE PLACED HERE">
+  <meta name="keywords" content="Neural Rendering, Gaussian Splatting, Autonomous Driving, Computer Vision, 3D Reconstruction, NeurIPS 2025">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#2563eb">
 
-
-  <title>Bilateraldriving</title>
+  <title>Unifying Appearance Codes and Bilateral Grids for Driving Scene Gaussian Splatting | NeurIPS 2025</title>
   <link rel="icon" type="image/x-icon" href="static/images/icon-demo.ico">
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
-
+  
+  <!-- 优化字体加载 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- 核心样式 -->
   <link rel="stylesheet" href="static/css/bulma.min.css">
-  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
-  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
   <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="static/css/index.css">
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <!-- 预加载关键资源 -->
+  <link rel="preload" href="static/videos/teaser.mp4" as="video">
+  <link rel="preload" href="static/images/paradigm.png" as="image">
+  <link rel="preload" href="static/images/framework.png" as="image">
+
+  <!-- 延迟加载非关键脚本 -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
   <script defer src="static/js/fontawesome.all.min.js"></script>
-  <script src="static/js/bulma-carousel.min.js"></script>
-  <script src="static/js/bulma-slider.min.js"></script>
-  <script src="static/js/index.js"></script>
-  <script src="./static/js/video_comparison.js"></script>
-  <script src="./static/js/video_comparison_3.js"></script>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="static/js/bulma-carousel.min.js" defer></script>
+  <script src="static/js/bulma-slider.min.js" defer></script>
+  <script src="static/js/index.js" defer></script>
+  <script src="./static/js/video_comparison_ratio_fixed.js" defer></script>
+  <script src="./static/js/performance.js" defer></script>
+  
   <style>
-      /* 自定义一些基础样式 */
-      body {
-          background-color: #ffffff; /* 使用柔和的背景色 */
-          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    :root {
+      --primary-color: #2563eb;
+      --primary-dark: #1d4ed8;
+      --secondary-color: #64748b;
+      --accent-color: #f59e0b;
+      --text-primary: #1e293b;
+      --text-secondary: #64748b;
+      --bg-primary: #ffffff;
+      --bg-secondary: #f8fafc;
+      --bg-accent: #f1f5f9;
+      --border-color: #e2e8f0;
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+      --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+      --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --gradient-accent: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text-primary);
+      background: var(--bg-primary);
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    /* 现代化容器 */
+    .container-modern {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    /* 英雄区域 */
+    .hero-modern {
+      background: linear-gradient(135deg, #0c0a0f 0%, #1a0b2e 25%, #16213e 50%, #0f3460 75%, #533483 100%);
+      color: white;
+      padding: 2rem 0;
+      position: relative;
+      overflow: hidden;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-modern::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="a" cx="50%" cy="50%"><stop offset="0%" stop-color="%23a855f7" stop-opacity="0.2"/><stop offset="100%" stop-color="%23a855f7" stop-opacity="0"/></radialGradient><radialGradient id="b" cx="50%" cy="50%"><stop offset="0%" stop-color="%230ea5e9" stop-opacity="0.15"/><stop offset="100%" stop-color="%230ea5e9" stop-opacity="0"/></radialGradient></defs><circle cx="200" cy="200" r="300" fill="url(%23a)"/><circle cx="800" cy="800" r="200" fill="url(%23b)"/><circle cx="500" cy="100" r="150" fill="url(%23a)"/></svg>');
+      opacity: 0.6;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .title-modern {
+      font-size: clamp(2.2rem, 4.5vw, 2.8rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      line-height: 1.1;
+      text-shadow: 0 3px 6px rgba(0,0,0,0.4);
+      letter-spacing: -0.01em;
+    }
+
+    .subtitle-modern {
+      font-size: clamp(1.1rem, 2.2vw, 1.3rem);
+      font-weight: 600;
+      margin-bottom: 1.2rem;
+      opacity: 0.95;
+      color: #cbd5e1;
+    }
+
+    .subtitle-modern strong {
+      color: #a855f7;
+      font-weight: 700;
+      text-shadow: 0 2px 4px rgba(168, 85, 247, 0.3);
+      position: relative;
+    }
+
+    .subtitle-modern strong::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #a855f7, #c084fc);
+      border-radius: 1px;
+      opacity: 0.8;
+    }
+
+    .authors-modern {
+      font-size: 1rem;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+      opacity: 0.85;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .author-link {
+      color: #a855f7;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .author-link:hover {
+      color: #c084fc;
+      text-decoration: underline;
+    }
+
+    .affiliations {
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+
+    /* 按钮组 */
+    .button-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+
+    .btn-modern {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.8rem 1.5rem;
+      background: rgba(168, 85, 247, 0.25);
+      color: white;
+      text-decoration: none;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(168, 85, 247, 0.5);
+    }
+
+    .btn-modern:hover {
+      background: rgba(168, 85, 247, 0.35);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(168, 85, 247, 0.4);
+    }
+
+    .btn-primary {
+      background: var(--accent-color);
+      border-color: var(--accent-color);
+    }
+
+    .btn-primary:hover {
+      background: #d97706;
+      border-color: #d97706;
+    }
+
+    /* 导航 */
+    .nav-modern {
+      background: linear-gradient(135deg, rgba(12, 10, 15, 0.95) 0%, rgba(26, 11, 46, 0.95) 25%, rgba(22, 33, 62, 0.95) 50%, rgba(15, 52, 96, 0.95) 75%, rgba(83, 52, 131, 0.95) 100%);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid rgba(168, 85, 247, 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-content {
+      display: flex;
+      justify-content: center;
+      padding: 1rem 0;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-link {
+      color: rgba(255, 255, 255, 0.9);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link:hover {
+      background: rgba(168, 85, 247, 0.2);
+      color: #c084fc;
+      transform: translateY(-1px);
+    }
+
+    /* 内容区域 */
+    .content-section {
+      padding: 4rem 0;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 3rem;
+      color: var(--text-primary);
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -0.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: var(--gradient-primary);
+      border-radius: 2px;
+    }
+
+    /* 卡片样式 */
+    .card-modern {
+      background: white;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border-color);
+      transition: all 0.3s ease;
+    }
+
+    .card-modern:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-2px);
+    }
+
+    /* 视频网格 */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .video-container {
+      position: relative;
+      background: #000;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      transition: all 0.3s ease;
+    }
+
+    .video-container:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-4px);
+    }
+
+    /* 视频容器大小调整 */
+    .single-video-container {
+      max-width: 750px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .single-video-container .video-container {
+      max-width: 100%;
+    }
+
+    .video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* 标签页 */
+    .tab-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+      background: var(--bg-secondary);
+      padding: 0.5rem;
+      border-radius: 12px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .tab-button {
+      padding: 0.75rem 1.5rem;
+      background: transparent;
+      border: none;
+      border-radius: 8px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .tab-button.active {
+      background: var(--primary-color);
+      color: white;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .tab-button:hover:not(.active) {
+      background: var(--bg-accent);
+      color: var(--text-primary);
+    }
+
+    /* 响应式设计 */
+    @media (max-width: 768px) {
+      .hero-modern {
+        padding: 1.5rem 0;
+        min-height: 100vh;
       }
-      /* 视频容器网格布局 */
+      
+      .hero-content {
+        max-width: 100%;
+        padding: 0 1rem;
+      }
+      
+      .title-modern {
+        font-size: clamp(1.8rem, 6vw, 2.5rem);
+        margin-bottom: 0.6rem;
+      }
+      
+      .subtitle-modern {
+        font-size: clamp(0.9rem, 3vw, 1.1rem);
+        margin-bottom: 0.8rem;
+      }
+      
+      .authors-modern {
+        font-size: 0.8rem;
+        margin-bottom: 1.2rem;
+      }
+      
+      .button-group {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .nav-links {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      
       .video-grid {
-          display: grid;
-          grid-template-columns: repeat(1, 1fr); /* 默认两列 */
-          gap: 0rem; /* 网格间距 */
+        grid-template-columns: 1fr;
+        gap: 1rem;
       }
-      /* 视频本身样式 */
-      .video {
-          width: 100%;
-          height: auto;
-          border-radius: 0.5rem;
-          background-color: #000;
-          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      
+      .tab-container {
+        flex-direction: column;
+        gap: 0.5rem;
       }
-      /* 按钮的激活状态 */
-      .tab-button.active {
-          background-color: #3b82f6; /* 蓝色 */
-          color: #ffffff;
-          font-weight: 600;
-      }
+    }
+
+    /* 加载动画 */
+    .loading {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255,255,255,.3);
+      border-radius: 50%;
+      border-top-color: #fff;
+      animation: spin 1s ease-in-out infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* 淡入动画 */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* 代码块样式 */
+    .code-block {
+      background: #1e293b;
+      color: #e2e8f0;
+      padding: 1.5rem;
+      border-radius: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      overflow-x: auto;
+      box-shadow: var(--shadow-md);
+    }
+
+    /* 页脚 */
+    .footer-modern {
+      background: var(--bg-secondary);
+      padding: 3rem 0 2rem;
+      border-top: 1px solid var(--border-color);
+      text-align: center;
+      color: var(--text-secondary);
+    }
   </style>
 </head>
 
 <body>
+  <!-- Navigation -->
+  <nav class="nav-modern">
+    <div class="container-modern">
+      <div class="nav-content">
+        <ul class="nav-links">
+          <li><a href="#abstract" class="nav-link">Abstract</a></li>
+          <li><a href="#framework" class="nav-link">Framework</a></li>
+          <li><a href="#videos" class="nav-link">Video Demos</a></li>
+          <li><a href="#bibtex" class="nav-link">Citation</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-<div class="max-w-5xl mx-auto p-4 md:p-8">
+  <!-- 英雄区域 -->
+  <section class="hero-modern">
+    <div class="container-modern">
+      <div class="hero-content">
+        <h1 class="title-modern">
+          <img src="static/images/icon-demo.ico" alt="Title Icon" style="height: 1.2em; width: auto; vertical-align: middle; margin-right: 15px;"> 
+          Unifying Appearance Codes and Bilateral Grids for Driving Scene Gaussian Splatting
+        </h1>
+        
+        <div class="subtitle-modern">
+          <strong>NeurIPS 2025</strong>
+        </div>
 
-  <section class="hero">
-    <div class="hero-body">
-      <div class="container is-max-desktop">
-        <div class="columns is-centered">
-          <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">
-              <img src="static/images/icon-demo.ico" alt="Title Icon" class="title-icon"> 
-              Unifying Appearance Codes and Bilateral Grids for Driving Scene Gaussian Splatting
-            </h1>
-            <div class="is-size-5 publication-authors">
-              <span class="author-block">
-                <a href="https://bigcileng.github.io/">Nan Wang</a><sup>6,11</sup>,
-              </span>
-              <span class="author-block">
-                <a href="https://tao-11-chen.github.io/">Yuantao Chen</a><sup>8,11</sup>,
-              </span>
-              <span class="author-block">
-                <a href="https://li-xingxiao.github.io/homepage/">Lixing Xiao</a><sup>10</sup>,
-              </span>
-              <span class="author-block">
-                <a href="https://scholar.google.com.hk/citations?user=v0iwkScAAAAJ&amp;hl=en&amp;oi=sra">Weiqing Xiao</a><sup>2,10</sup>,
-              </span>
-              <span class="author-block">
-                <a href="https://scholar.google.com/citations?user=V-YdQiAAAAAJ">Bohan Li</a><sup>4,5</sup>,
-              </span>
-              <span class="author-block">
-                <a href="https://scholar.google.com/citations?user=HsV0WbwAAAAJ">Zhaoxi Chen</a><sup>3</sup>,
-              </span>
-              <span class="author-block">
-                <a href="https://github.com/hugoycj">Chongjie Ye</a><sup>8</sup>,
-              </span>
-              <span class="author-block">
-                <a href="https://daniellli.github.io/">Shaocong Xu</a><sup>1</sup>,
-              </span>
-              <span class="author-block">
-                <a href="https://scholar.google.com/citations?user=P4efBMcAAAAJ">Saining Zhang</a><sup>1,3</sup>,
-              </span>
-              <span class="author-block">
-                <a href="https://ziyangyan.github.io/">Ziyang Yan</a><sup>9</sup>,
-              </span>
-              <span class="author-block">
-                <a href="https://scholar.google.com.hk/citations?user=NMSccqAAAAAJ">Pierre Merriaux</a><sup>12</sup>,
-              </span>
-              <span class="author-block">
-                <a href="">Lei Lei</a><sup>12</sup>,
-              </span>
-              <span class="author-block">
-                <a href="https://tianfan.info/">Tianfan Xue</a><sup>7</sup>,
-              </span>
-              <span class="author-block">
-                <a href="https://scholar.google.com.hk/citations?user=ygQznUQAAAAJ&amp;hl=en">Hao Zhao</a><sup>1,11<svg class="svg-inline--fa fa-envelope fa-w-16" aria-hidden="true" focusable="false" data-prefix="fa" data-icon="envelope" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"></path></svg><!-- <i class="fa fa-envelope"></i> Font Awesome fontawesome.com --></sup>
-              </span>
-            </div>
+        <div class="authors-modern">
+          <a href="https://bigcileng.github.io/" class="author-link">Nan Wang</a><sup>1</sup>,
+          <a href="https://tao-11-chen.github.io/" class="author-link">Yuantao Chen</a><sup>1</sup>,
+          <a href="https://li-xingxiao.github.io/homepage/" class="author-link">Lixing Xiao</a><sup>1</sup>,
+          <a href="https://scholar.google.com.hk/citations?user=v0iwkScAAAAJ&hl=en&oi=sra" class="author-link">Weiqing Xiao</a><sup>1</sup>,
+          <a href="https://scholar.google.com/citations?user=V-YdQiAAAAAJ" class="author-link">Bohan Li</a><sup>3,4</sup>,
+          <a href="https://scholar.google.com/citations?user=HsV0WbwAAAAJ" class="author-link">Zhaoxi Chen</a><sup>1</sup>,
+          <a href="https://github.com/hugoycj" class="author-link">Chongjie Ye</a><sup>1</sup>,
+          <a href="https://daniellli.github.io/" class="author-link">Shaocong Xu</a><sup>1</sup>,
+          <a href="https://scholar.google.com/citations?user=P4efBMcAAAAJ" class="author-link">Saining Zhang</a><sup>1</sup>,
+          <a href="https://ziyangyan.github.io/" class="author-link">Ziyang Yan</a><sup>1</sup>,
+          <a href="https://scholar.google.com.hk/citations?user=NMSccqAAAAAJ" class="author-link">Pierre Merriaux</a><sup>6</sup>,
+          <a href="" class="author-link">Lei Lei</a><sup>6</sup>,
+          <a href="https://tianfan.info/" class="author-link">Tianfan Xue</a><sup>5</sup>,
+          <a href="https://scholar.google.com.hk/citations?user=ygQznUQAAAAJ&hl=en" class="author-link">Hao Zhao</a><sup>1,2</sup> <i class="fas fa-envelope"></i>
+        </div>
 
-            <div class="is-size-5 publication-authors">
-              <span class="author-block"><sup>1</sup>AIR, Tsinghua University</span>
-              <span class="author-block"><sup>2</sup>Beihang University</span>
-              <span class="author-block"><sup>3</sup>Nanyang Technological University</span>
-              <span class="author-block"><sup>4</sup>Shanghai Jiao Tong University</span>
-              <span class="author-block"><sup>5</sup>Eastern Institute of Technology, Ningbo</span>
-              <span class="author-block"><sup>6</sup>Tongji University</span>
-              <span class="author-block"><sup>7</sup>The Chinese University of Hong Kong</span>
-              <span class="author-block"><sup>8</sup>The Chinese University of Hong Kong, Shenzhen</span>
-              <span class="author-block"><sup>9</sup>University of Trento</span>
-              <span class="author-block"><sup>10</sup>Zhejiang University</span>
-              <span class="author-block"><sup>11</sup>Lightwheel AI</span>
-              <span class="author-block"><sup>12</sup>LeddarTech</span>
-              <!-- <span class="eql-cntrb"><small><br><sup>*</sup>Equal Contribution&nbsp; </small></span> -->
-              <span class="eql-cntrb"><small><br><sup><svg class="svg-inline--fa fa-envelope fa-w-16" aria-hidden="true" focusable="false" data-prefix="fa" data-icon="envelope" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"></path></svg><!-- <i class="fa fa-envelope"></i> Font Awesome fontawesome.com --></sup>Corresponding Author</small></span>
-            </div>
+        <div class="affiliations">
+          <sup>1</sup>BAAI • 
+          <sup>2</sup>AIR, THU • 
+          <sup>3</sup>SJTU • 
+          <sup>4</sup>EIT(Ningbo) • 
+          <sup>5</sup>CUHK • 
+          <sup>6</sup>LeddarTech
+          <br><small><i class="fas fa-envelope"></i> Corresponding Author</small>
+        </div>
 
-            <div class="column has-text-centered">
-              <div class="publication-links">
-                <span class="link-block">
-                  <a href="static/bilateral-driving-arxiv.pdf" target="_blank"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fas fa-file-pdf"></i>
-                    </span>
-                    <span>Paper</span>
-                  </a>
-                </span>
+        <div class="button-group">
+          <a href="static/bilateral-driving-arxiv.pdf" target="_blank" class="btn-modern btn-primary">
+            <i class="fas fa-file-pdf"></i>
+            <span>Paper</span>
+          </a>
+          <a href="https://github.com/BigCiLeng/bilateral-driving" target="_blank" class="btn-modern">
+            <i class="fab fa-github"></i>
+            <span>Code</span>
+          </a>
+          <a href="https://arxiv.org/abs/2506.05280" target="_blank" class="btn-modern">
+            <i class="ai ai-arxiv"></i>
+            <span>arXiv</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- TL;DR Section -->
+  <section class="content-section" style="background: var(--bg-secondary);">
+    <div class="container-modern">
+      <div class="card-modern fade-in">
+        <div style="text-align: center; margin-bottom: 2rem;">
+          <h2 style="font-size: 2rem; font-weight: 700; color: var(--text-primary); margin-bottom: 1rem;">
+            <i class="fas fa-lightbulb" style="color: var(--accent-color); margin-right: 10px;"></i>
+            Key Contribution
+          </h2>
+          <p style="font-size: 1.2rem; color: var(--text-secondary); line-height: 1.8;">
+            <strong>We propose Multi-Scale Bilateral Grids</strong> that unify appearance codes and bilateral grids, significantly improving geometric accuracy in dynamic, decoupled autonomous driving scene reconstruction.
+          </p>
+        </div>
+        <div style="text-align: center;">
+          <img src="static/images/paradigm.png" alt="Paradigm" style="max-width: 80%; height: auto; border-radius: 12px; box-shadow: var(--shadow-md);">
+        </div>
+      </div>
+    </div>
+  </section>
 
-                <span class="link-block">
-                  <a href="https://github.com/BigCiLeng/bilateral-driving" target="_blank"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fab fa-github"></i>
-                    </span>
-                    <span>Code</span>
-                  </a>
-                </span>
-
-                <span class="link-block">
-                  <a href="https://arxiv.org/abs/2506.05280" target="_blank"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="ai ai-arxiv"></i>
-                    </span>
-                    <span>arXiv</span>
-                  </a>
-                </span>
-
-                <div class="col-sm-12" style="text-align: center;">
-                  <h3>Table of Contents</h3>
-                  <ul style="list-style-type: none; padding: 0;">
-                    <!-- <li><a href="#banner">Introductory Video</a></li> -->
-                    <!-- <li><a href="#banner">Teaser</a></li> -->
-                    <li><a href="#abstract">Abstract</a></li>
-                    <li><a href="#framework">Framework</a></li>
-                    <li><a href="#video_gallery_1_title">Video Demos</a></li>
-                    <li><a href="#bibtex_title">BibTeX</a></li>
-                  </ul>
-                </div>
-
-              </div>
-            </div>
+  <!-- Demo Video -->
+  <section class="content-section" id="videos">
+    <div class="container-modern">
+      <div class="fade-in">
+        <h2 class="section-title">Teaser Video</h2>
+        <div class="card-modern">
+          <div class="video-container teaser-video" style="max-width: 750px; margin: 0 auto;">
+            <video class="video" id="banner" loop playsinline muted preload="metadata" src="static/videos/teaser.mp4" onplay="resizeAndPlay3(this)" onloadedmetadata="this.style.height='auto'; this.style.display='block';"></video>
+            <canvas class="videoMerge" id="bannerMerge3"></canvas>
           </div>
         </div>
       </div>
     </div>
   </section>
-  <section class="hero teaser">
-    <div class="container is-max-desktop">
-      <div class="hero-body">
-
-        <div class="columns is-centered has-text-centered">
-          <div class="column is-full-width">
-            <h2 class="subtitle has-text-centered" style="margin-top: 15px">
-              <b>TL;DR</b>: we introduced Multi-Scale Bilateral Grids that unifies appearance codes and bilateral grids, significantly improves geometric accuracy in dynamic, decoupled autonomous driving scene reconstruction.
-            </h2>
-            <img src="static/images/paradigm.png" class="column is-2.7 has-text-centered" alt="">        
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-</div>
-
-<div class="max-w-5xl mx-auto pl-8 md:pl-16"">
-  <section class="hero teaser">
-    <div class="container is-max-desktop">
-      <div class="hero-body">
-        <div class="columns is-centered has-text-centered">
-          <div class="column is-full-width">
-            <video class="video" id="banner" loop playsinline autoplay muted src="static/videos/teaser.mp4" onplay="resizeAndPlay3(this)" ></video>
-            <canvas height=0 class="videoMerge" id="bannerMerge3"></canvas>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-</div>
-  <!-- Paper abstract -->
-  <section class="section hero is-light" id="abstract">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          <h2 class="title is-3">Abstract</h2>
-          <div class="content has-text-justified">
+  <!-- Abstract Section -->
+  <section class="content-section" id="abstract">
+    <div class="container-modern">
+      <div class="fade-in">
+        <h2 class="section-title">Abstract</h2>
+        <div class="card-modern">
+          <div style="max-width: 800px; margin: 0 auto; text-align: justify; line-height: 1.8; font-size: 1.1rem;">
             <p>
               Neural rendering techniques, including NeRF and Gaussian Splatting (GS), rely on photometric consistency to produce high-quality reconstructions. However, in real-world scenarios, it is challenging to guarantee perfect photometric consistency in acquired images. Appearance codes have been widely used to address this issue, but their modeling capability is limited, as a single code is applied to the entire image. Recently, the bilateral grid was introduced to perform pixel-wise color mapping, but it is difficult to optimize and constrain effectively. In this paper, we propose a novel multi-scale bilateral grid that unifies appearance codes and bilateral grids. We demonstrate that this approach significantly improves geometric accuracy in dynamic, decoupled autonomous driving scene reconstruction, outperforming both appearance codes and bilateral grids. This is crucial for autonomous driving, where accurate geometry is important for obstacle avoidance and control. Our method shows strong results across four datasets: Waymo, NuScenes, Argoverse, and PandaSet. We further demonstrate that the improvement in geometry is driven by the multi-scale bilateral grid, which effectively reduces floaters caused by photometric inconsistency.
             </p>
@@ -256,203 +608,464 @@
       </div>
     </div>
   </section>
-  <!-- End paper abstract -->
 
-  <section clas="hero is-large" id="framework">
-    <div class="container" style="width: 100vw;">
-      <br><br>
-      <h2 class="title is-3 has-text-centered">Framework</h2>
-    </div>
-  </section>
-<div class="max-w-5xl mx-auto p-4 md:p-8">
-  <section class="hero teaser">
-    <div class="container is-max-desktop">
-      <div class="hero-body">
-        <div class="columns is-centered has-text-centered">
-          <div class="column is-full-width">
-            <img src="static/images/framework.png" class="column is-2.7 has-text-centered" alt="">   
-            <h2 class="subtitle has-text-centered" style="margin-top: 15px">
-              We unify appearance codes with multi-scale bilateral grids. Initially, a coarse rendering is obtained from a Gaussian scene graph. This rendered image is then processed by our multi-scale bilateral grids to perform detailed per-pixel color modeling, guided by a luminance-based map through slice and fusion operations.
-            </h2>     
+  <!-- Framework Section -->
+  <section class="content-section" id="framework" style="background: var(--bg-secondary);">
+    <div class="container-modern">
+      <div class="fade-in">
+        <h2 class="section-title">Framework</h2>
+        <div class="card-modern">
+          <div style="text-align: center;">
+            <img src="static/images/framework.png" alt="Framework" style="max-width: 80%; height: auto; border-radius: 12px; box-shadow: var(--shadow-md); margin-bottom: 2rem;">
+            <div style="max-width: 800px; margin: 0 auto; text-align: justify; line-height: 1.8; font-size: 1.1rem;">
+              <p>
+                We unify appearance codes with multi-scale bilateral grids. Initially, a coarse rendering is obtained from a Gaussian scene graph. This rendered image is then processed by our multi-scale bilateral grids to perform detailed per-pixel color modeling, guided by a luminance-based map through slice and fusion operations.
+              </p>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
-</div>
 
-  <section clas="hero is-large" id="video_gallery_1_title">
-    <div class="container" style="width: 100vw;">
-      <br>
-      <h2 class="title is-3 has-text-centered">Video Demos</h2>
-      <h4 class="subtitle has-text-centered">
-          Rendering results comparsion.<br>
-          Baseline result are reconstructed using <a href="https://ziyc.github.io/omnire/">Omnire</a> (ICLR 2025 Spotlight). <br>
-          Scenes are from <a href="https://www.nuscenes.org/">nuScenes</a>, <a href="https://waymo.com/open/">Waymo</a>, <a href="https://scale.com/open-av-datasets/pandaset">PandaSet</a>, and <a href="https://www.argoverse.org/">Argoverse</a>.
-      </h4>
-      <p class="has-text-centered">Due to file size limitations, videos are compressed and quality might be affected.</p>
+  <!-- Video Demos Section -->
+  <section class="content-section" id="video_gallery_1_title">
+    <div class="container-modern">
+      <div class="fade-in">
+        <h2 class="section-title">Rendering Results Comparison</h2>
+        <div class="card-modern">
+          <div style="text-align: center; margin-bottom: 2rem;">
+            <p style="font-size: 1.1rem; color: var(--text-secondary); line-height: 1.8; margin-bottom: 1rem;">
+              Baseline results are reconstructed using <a href="https://ziyc.github.io/omnire/" target="_blank" style="color: var(--primary-color); text-decoration: none;">Omnire</a> (ICLR 2025 Spotlight).<br>
+              Scenes are from <a href="https://www.nuscenes.org/" target="_blank" style="color: var(--primary-color); text-decoration: none;">nuScenes</a>, <a href="https://waymo.com/open/" target="_blank" style="color: var(--primary-color); text-decoration: none;">Waymo</a>, <a href="https://scale.com/open-av-datasets/pandaset" target="_blank" style="color: var(--primary-color); text-decoration: none;">PandaSet</a>, and <a href="https://www.argoverse.org/" target="_blank" style="color: var(--primary-color); text-decoration: none;">Argoverse</a>.
+            </p>
+            <p style="font-size: 0.9rem; color: var(--text-secondary);">
+              <i class="fas fa-info-circle"></i> Due to file size limitations, videos are compressed and quality might be affected
+            </p>
+          </div>
+
+          <!-- Dataset Selection -->
+          <div class="dataset-selector">
+            <button class="dataset-btn active" data-dataset="nuscenes">
+              <i class="fas fa-video"></i>
+              nuScenes Dataset
+            </button>
+            <button class="dataset-btn" data-dataset="waymo">
+              <i class="fas fa-car"></i>
+              Waymo Dataset
+            </button>
+            <button class="dataset-btn" data-dataset="argoverse">
+              <i class="fas fa-road"></i>
+              Argoverse & PandaSet
+            </button>
+          </div>
+
+          <!-- Video Selector -->
+          <div class="video-selector" id="video-selector">
+            <!-- Video buttons will be populated by JavaScript -->
+          </div>
+
+          <!-- Single Video Display -->
+          <div class="single-video-container">
+            <div class="video-container" id="current-video-container">
+              <video class="video" id="current-video" loop playsinline muted preload="metadata"></video>
+              <canvas class="videoMerge" id="current-video-merge"></canvas>
+              <div class="video-loading" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; display: none;">
+                <div class="loading"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
     </div>
   </section>
 
+  <script>
+    // Video data configuration
+    const videoData = {
+      nuscenes: [
+        { id: '152', src: 'static/videos/nuscenes/152.mp4', name: 'Scene 152' },
+        { id: '200', src: 'static/videos/nuscenes/200.mp4', name: 'Scene 200' },
+        { id: '164', src: 'static/videos/nuscenes/164.mp4', name: 'Scene 164' },
+        { id: '171', src: 'static/videos/nuscenes/171.mp4', name: 'Scene 171' }
+      ],
+      waymo: [
+        { id: '551', src: 'static/videos/waymo/0.mp4', name: 'Scene 0' },
+        { id: '3', src: 'static/videos/waymo/31.mp4', name: 'Scene 31' },
+        { id: '0', src: 'static/videos/waymo/551.mp4', name: 'Scene 551' },
+        { id: '31', src: 'static/videos/waymo/3.mp4', name: 'Scene 3' }
+      ],
+      argoverse: [
+        { id: '70', src: 'static/videos/argoverse/3.mp4', name: 'Argoverse 3' },
+        { id: '66', src: 'static/videos/argoverse/5.mp4', name: 'Argoverse 5' },
+        { id: 'a3', src: 'static/videos/pandaset/70.mp4', name: 'PandaSet 70' },
+        { id: 'a5', src: 'static/videos/pandaset/66.mp4', name: 'PandaSet 66' }
+      ]
+    };
 
-<div class="max-w-5xl mx-auto p-4 md:p-8">
+    let currentDataset = 'nuscenes';
+    let currentVideoIndex = 0;
 
-        <!-- 切换按钮容器 -->
-        <div id="tab-buttons" class="flex justify-center items-center space-x-2 md:space-x-4 mb-8 bg-white p-2 rounded-full shadow-md w-fit mx-auto">
-            <button class="tab-button px-4 py-2 md:px-6 md:py-3 text-sm md:text-base font-medium text-gray-600 rounded-full transition-colors duration-300 ease-in-out focus:outline-none active" data-group="group1">Video Gallery 1</button>
-            <button class="tab-button px-4 py-2 md:px-6 md:py-3 text-sm md:text-base font-medium text-gray-600 rounded-full transition-colors duration-300 ease-in-out focus:outline-none" data-group="group2">Video Gallery 2</button>
-            <button class="tab-button px-4 py-2 md:px-6 md:py-3 text-sm md:text-base font-medium text-gray-600 rounded-full transition-colors duration-300 ease-in-out focus:outline-none" data-group="group3">Video Gallery 3</button>
-        </div>
+    // Initialize video switcher
+    function initializeVideoSwitcher() {
+      const datasetBtns = document.querySelectorAll('.dataset-btn');
+      const videoSelector = document.getElementById('video-selector');
+      const currentVideo = document.getElementById('current-video');
+      const currentVideoMerge = document.getElementById('current-video-merge');
 
-        <!-- 视频内容容器 -->
-        <div id="video-content">
-            <!-- 视频组 1 -->
-            <div id="group1" class="video-group video-grid">
-                <div class="video_wrapper bg-white p-3 rounded-lg shadow-sm">
-                    <video class="video" id="152" loop playsinline autoplay muted src="static/videos/nuscenes/152.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
-                    <canvas height=0 class="videoMerge" id="152Merge"></canvas>
-                </div>
-                <div class="video_wrapper bg-white p-3 rounded-lg shadow-sm">
-                    <video class="video" id="200" loop playsinline autoplay muted src="static/videos/nuscenes/200.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
-                    <canvas height=0 class="videoMerge" id="200Merge"></canvas>
-                </div>
-                <div class="video_wrapper bg-white p-3 rounded-lg shadow-sm">
-                    <video class="video" id="164" loop playsinline autoplay muted src="static/videos/nuscenes/164.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
-                    <canvas height=0 class="videoMerge" id="164Merge"></canvas>
-                </div>
-                <div class="video_wrapper bg-white p-3 rounded-lg shadow-sm">
-                    <video class="video" id="171" loop playsinline autoplay muted src="static/videos/nuscenes/171.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
-                    <canvas height=0 class="videoMerge" id="171Merge"></canvas>
-                </div>
-            </div>
+      // Dataset switching
+      datasetBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          const dataset = this.dataset.dataset;
+          if (dataset === currentDataset) return;
 
-            <!-- 视频组 2 (默认隐藏) -->
-            <div id="group2" class="video-group video-grid" style="display: none;">
-                <!-- 视频 5 -->
-                <div class="video_wrapper bg-white p-3 rounded-lg shadow-sm">
-                    <video class="video" id="551" loop playsinline autoplay muted src="static/videos/waymo/0.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
-                    <canvas height=0 class="videoMerge" id="0Merge"></canvas>
-                </div>
-                <!-- 视频 6 -->
-                <div class="video_wrapper bg-white p-3 rounded-lg shadow-sm">
-                    <video class="video" id="3" loop playsinline autoplay muted src="static/videos/waymo/31.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
-                    <canvas height=0 class="videoMerge" id="31Merge"></canvas>
-                </div>
-                <!-- 视频 7 -->
-                <div class="video_wrapper bg-white p-3 rounded-lg shadow-sm">
-                    <video class="video" id="0" loop playsinline autoplay muted src="static/videos/waymo/551.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
-                    <canvas height=0 class="videoMerge" id="551Merge"></canvas>
-                </div>
-                <!-- 视频 8 -->
-                <div class="video_wrapper bg-white p-3 rounded-lg shadow-sm">
-                    <video class="video" id="31" loop playsinline autoplay muted src="static/videos/waymo/3.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
-                    <canvas height=0 class="videoMerge" id="3Merge"></canvas>
-                </div>
-            </div>
+          // Update active dataset button
+          datasetBtns.forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
 
-            <!-- 视频组 3 (默认隐藏) -->
-            <div id="group3" class="video-group video-grid" style="display: none;">
-                <!-- 视频 9 -->
-                <div class="video_wrapper bg-white p-3 rounded-lg shadow-sm">
-                    <video class="video" id="70" loop playsinline autoplay muted src="static/videos/argoverse/3.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
-                    <canvas height=0 class="videoMerge" id="70Merge"></canvas>
-                </div>
-                <!-- 视频 10 -->
-                <div class="video_wrapper bg-white p-3 rounded-lg shadow-sm">
-                    <video class="video" id="66" loop playsinline autoplay muted src="static/videos/argoverse/5.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
-                    <canvas height=0 class="videoMerge" id="66Merge"></canvas>
-                </div>
-                <!-- 视频 11 -->
-                <div class="video_wrapper bg-white p-3 rounded-lg shadow-sm">
-                    <video class="video" id="a3" loop playsinline autoplay muted src="static/videos/pandaset/70.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
-                    <canvas height=0 class="videoMerge" id="a3Merge"></canvas>
-                </div>
-                <!-- 视频 12 -->
-                <div class="video_wrapper bg-white p-3 rounded-lg shadow-sm">
-                    <video class="video" id="a5" loop playsinline autoplay muted src="static/videos/pandaset/66.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
-                    <canvas height=0 class="videoMerge" id="a5Merge"></canvas>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // 等待文档加载完毕
-        document.addEventListener('DOMContentLoaded', function() {
-            // 获取所有的按钮和视频组
-            const buttons = document.querySelectorAll('.tab-button');
-            const videoGroups = document.querySelectorAll('.video-group');
-
-            // 为每个按钮添加点击事件监听器
-            buttons.forEach(button => {
-                button.addEventListener('click', function() {
-                    // 获取点击按钮的目标组ID (来自 data-group 属性)
-                    const targetGroup = this.dataset.group;
-
-                    // 1. 移除所有按钮的 'active' 样式
-                    buttons.forEach(btn => {
-                        btn.classList.remove('active');
-                    });
-
-                    // 2. 为当前点击的按钮添加 'active' 样式
-                    this.classList.add('active');
-
-                    // 3. 隐藏所有的视频组
-                    videoGroups.forEach(group => {
-                        group.style.display = 'none';
-                    });
-
-                    // 4. 显示目标视频组
-                    const groupToShow = document.getElementById(targetGroup);
-                    if (groupToShow) {
-                        // 使用 grid 布局显示
-                        groupToShow.style.display = 'grid';
-                    }
-                });
-            });
+          currentDataset = dataset;
+          currentVideoIndex = 0;
+          updateVideoSelector();
+          loadCurrentVideo();
         });
-    </script>
+      });
 
-<section class="section" id="bibtex_title">
-    <div class="container is-max-desktop content">
-      <h2 class="title">BibTeX</h2>
-        <pre><code>@article{wang2025unifying,
+      // Update video selector buttons
+      function updateVideoSelector() {
+        const videos = videoData[currentDataset];
+        videoSelector.innerHTML = '';
+
+        videos.forEach((video, index) => {
+          const btn = document.createElement('button');
+          btn.className = `video-btn ${index === currentVideoIndex ? 'active' : ''}`;
+          btn.innerHTML = `<i class="fas fa-play"></i> ${video.name}`;
+          btn.addEventListener('click', () => {
+            currentVideoIndex = index;
+            updateVideoSelector();
+            loadCurrentVideo();
+          });
+          videoSelector.appendChild(btn);
+        });
+      }
+
+      // Load current video
+      function loadCurrentVideo() {
+        const videos = videoData[currentDataset];
+        const currentVideoData = videos[currentVideoIndex];
+        
+        console.log(`Loading video: ${currentVideoData.id} from ${currentVideoData.src}`);
+        
+        // Clear previous event handlers
+        currentVideo.onplay = null;
+        currentVideo.onloadedmetadata = null;
+        currentVideo.onloadeddata = null;
+        currentVideo.oncanplay = null;
+        
+        // Update video source and attributes
+        currentVideo.src = currentVideoData.src;
+        currentVideo.id = currentVideoData.id;
+        currentVideoMerge.id = currentVideoData.id + 'Merge';
+        
+        // Set up video event handlers
+        currentVideo.onloadedmetadata = function() {
+          console.log(`Video ${this.id} metadata loaded`);
+          this.style.height = 'auto';
+          this.style.display = 'block';
+          
+          // Update canvas size when video metadata loads
+          setTimeout(() => {
+            const videoRect = this.getBoundingClientRect();
+            if (videoRect.width > 0 && videoRect.height > 0) {
+              const scaledHeight = videoRect.height * 2;
+              currentVideoMerge.style.width = videoRect.width + 'px';
+              currentVideoMerge.style.height = scaledHeight + 'px';
+              
+              // Update container height
+              const container = currentVideoMerge.closest('.single-video-container');
+              if (container) {
+                const videoContainer = container.querySelector('.video-container');
+                if (videoContainer) {
+                  videoContainer.style.height = scaledHeight + 'px';
+                }
+              }
+              console.log(`Canvas size updated: ${videoRect.width}x${videoRect.height}`);
+            }
+          }, 100);
+        };
+        
+        currentVideo.onloadeddata = function() {
+          console.log(`Video ${this.id} data loaded`);
+          this.style.height = 'auto';
+          this.style.display = 'block';
+          
+          // Try to play the video
+          this.play().catch(e => {
+            console.log(`Autoplay prevented for ${this.id}:`, e);
+          });
+        };
+        
+        currentVideo.oncanplay = function() {
+          console.log(`Video ${this.id} can play`);
+          this.style.height = 'auto';
+          this.style.display = 'block';
+          
+          // Update canvas size
+          const videoRect = this.getBoundingClientRect();
+          if (videoRect.width > 0 && videoRect.height > 0) {
+            const scaledHeight = videoRect.height * 2;
+            currentVideoMerge.style.width = videoRect.width + 'px';
+            currentVideoMerge.style.height = scaledHeight + 'px';
+            
+            // Update container height
+            const container = currentVideoMerge.closest('.single-video-container');
+            if (container) {
+              const videoContainer = container.querySelector('.video-container');
+              if (videoContainer) {
+                videoContainer.style.height = scaledHeight + 'px';
+              }
+            }
+          }
+          
+          // Try to play the video
+          this.play().catch(e => {
+            console.log(`Autoplay prevented for ${this.id}:`, e);
+          });
+        };
+        
+        currentVideo.onplay = function() {
+          console.log(`Video ${this.id} started playing`);
+          // Ensure canvas matches video dimensions exactly
+          const videoRect = this.getBoundingClientRect();
+          if (videoRect.width > 0 && videoRect.height > 0) {
+            const scaledHeight = videoRect.height * 2;
+            currentVideoMerge.style.width = videoRect.width + 'px';
+            currentVideoMerge.style.height = scaledHeight + 'px';
+            
+            // Update container height
+            const container = currentVideoMerge.closest('.single-video-container');
+            if (container) {
+              const videoContainer = container.querySelector('.video-container');
+              if (videoContainer) {
+                videoContainer.style.height = scaledHeight + 'px';
+              }
+            }
+            console.log(`Canvas size set to: ${videoRect.width}x${scaledHeight}`);
+            resizeAndPlay(this);
+          }
+        };
+        
+        currentVideo.onerror = function(e) {
+          console.error(`Video ${this.id} load error:`, e);
+        };
+
+        // Load video
+        currentVideo.load();
+      }
+
+      // Initialize
+      updateVideoSelector();
+      loadCurrentVideo();
+    }
+
+    // Initialize teaser video
+    function initializeTeaserVideo() {
+      const bannerVideo = document.getElementById('banner');
+      const bannerMerge = document.getElementById('bannerMerge3');
+      
+      if (bannerVideo && bannerMerge) {
+        console.log('Initializing teaser video');
+        
+        bannerVideo.addEventListener('loadedmetadata', function() {
+          console.log('Teaser video metadata loaded');
+          this.style.height = 'auto';
+          this.style.display = 'block';
+          
+          // Update canvas size
+          setTimeout(() => {
+            const videoRect = this.getBoundingClientRect();
+            if (videoRect.width > 0 && videoRect.height > 0) {
+              const scaledHeight = videoRect.height * 3;
+              bannerMerge.style.width = videoRect.width + 'px';
+              bannerMerge.style.height = scaledHeight + 'px';
+              
+              // Update container height
+              const container = bannerMerge.closest('.teaser-video');
+              if (container) {
+                container.style.height = scaledHeight + 'px';
+              }
+              console.log(`Teaser canvas size: ${videoRect.width}x${videoRect.height}`);
+            }
+          }, 100);
+        });
+        
+        bannerVideo.addEventListener('canplay', function() {
+          console.log('Teaser video can play');
+          this.style.height = 'auto';
+          this.style.display = 'block';
+          
+          // Try to play
+          this.play().catch(e => {
+            console.log('Teaser autoplay prevented:', e);
+          });
+        });
+        
+        bannerVideo.addEventListener('play', function() {
+          console.log('Teaser video started playing');
+          const videoRect = this.getBoundingClientRect();
+          if (videoRect.width > 0 && videoRect.height > 0) {
+            const scaledHeight = videoRect.height * 3;
+            bannerMerge.style.width = videoRect.width + 'px';
+            bannerMerge.style.height = scaledHeight + 'px';
+            bannerMerge.style.left = '0px';
+            bannerMerge.style.top = '0px';
+            
+            // Update container height
+            const container = bannerMerge.closest('.teaser-video');
+            if (container) {
+              container.style.height = scaledHeight + 'px';
+            }
+            console.log(`Teaser canvas final size: ${videoRect.width}x${scaledHeight}`);
+          }
+        });
+        
+        bannerVideo.addEventListener('error', function(e) {
+          console.error('Teaser video error:', e);
+        });
+        
+        // Load the video
+        bannerVideo.load();
+      }
+    }
+
+    // Initialize when DOM is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      initializeVideoSwitcher();
+      initializeTeaserVideo();
+      
+      // Handle window resize to update canvas dimensions
+      window.addEventListener('resize', function() {
+        const currentVideo = document.getElementById('current-video');
+        const currentVideoMerge = document.getElementById('current-video-merge');
+        const bannerVideo = document.getElementById('banner');
+        const bannerMerge = document.getElementById('bannerMerge3');
+        
+        if (currentVideo && currentVideoMerge && currentVideo.videoWidth > 0) {
+          const videoRect = currentVideo.getBoundingClientRect();
+          const scaledHeight = videoRect.height * 2;
+          currentVideoMerge.style.width = videoRect.width + 'px';
+          currentVideoMerge.style.height = scaledHeight + 'px';
+          
+          // Update container height
+          const container = currentVideoMerge.closest('.single-video-container');
+          if (container) {
+            const videoContainer = container.querySelector('.video-container');
+            if (videoContainer) {
+              videoContainer.style.height = scaledHeight + 'px';
+            }
+          }
+        }
+        
+        if (bannerVideo && bannerMerge && bannerVideo.videoWidth > 0) {
+          const videoRect = bannerVideo.getBoundingClientRect();
+          const scaledHeight = videoRect.height * 3;
+          bannerMerge.style.width = videoRect.width + 'px';
+          bannerMerge.style.height = scaledHeight + 'px';
+          
+          // Update container height
+          const container = bannerMerge.closest('.teaser-video');
+          if (container) {
+            container.style.height = scaledHeight + 'px';
+          }
+        }
+      });
+    });
+  </script>
+
+  <!-- BibTeX Section -->
+  <section class="content-section" id="bibtex" style="background: var(--bg-secondary);">
+    <div class="container-modern">
+      <div class="fade-in">
+        <h2 class="section-title">Citation</h2>
+        <div class="card-modern">
+          <div style="max-width: 800px; margin: 0 auto;">
+            <div class="code-block">
+<pre><code>@article{wang2025unifying,
   title={Unifying Appearance Codes and Bilateral Grids for Driving Scene Gaussian Splatting},
   author={Wang, Nan and Chen, Yuantao and Xiao, Lixing and Xiao, Weiqing and Li, Bohan and Chen, Zhaoxi and Ye, Chongjie and Xu, Shaocong and Zhang, Saining and Yan, Ziyang and others},
   journal={arXiv preprint arXiv:2506.05280},
   year={2025}
 }</code></pre>
+            </div>
+            <div style="text-align: center; margin-top: 1rem;">
+              <button onclick="copyBibtex()" class="btn-modern" style="background: var(--primary-color); color: white; border: none; cursor: pointer;">
+                <i class="fas fa-copy"></i>
+                <span>Copy BibTeX</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-
-  <footer class="footer">
-    <div class="container">
-      <div class="columns is-centered">
-        <div class="column is-8">
-          <div class="content">
-
-            <p>
-              This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template"
-                target="_blank">Academic Project Page Template</a> which was adopted from the <a
-                href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
-              You are free to borrow the source code of this website, we just ask that you link back to this page in the
-              footer. <br> This website is licensed under a <a rel="license"
-                href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
-                Commons Attribution-ShareAlike 4.0 International License</a>.
-            </p>
-
-          </div>
+  <!-- Footer -->
+  <footer class="footer-modern">
+    <div class="container-modern">
+      <div style="max-width: 800px; margin: 0 auto;">
+        <p style="font-size: 0.9rem; color: var(--text-secondary);">
+          This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" style="color: var(--primary-color); text-decoration: none;">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+        </p>
+        <div style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--border-color); text-align: center;">
+          <p style="font-size: 0.8rem; color: var(--text-secondary);">
+            © 2025 Bilateral Driving Project • NeurIPS 2025
+          </p>
         </div>
       </div>
     </div>
   </footer>
 
-  <!-- Statcounter tracking code -->
+  <script>
+    // Copy BibTeX function
+    function copyBibtex() {
+      const bibtex = `@article{wang2025unifying,
+  title={Unifying Appearance Codes and Bilateral Grids for Driving Scene Gaussian Splatting},
+  author={Wang, Nan and Chen, Yuantao and Xiao, Lixing and Xiao, Weiqing and Li, Bohan and Chen, Zhaoxi and Ye, Chongjie and Xu, Shaocong and Zhang, Saining and Yan, Ziyang and others},
+  journal={arXiv preprint arXiv:2506.05280},
+  year={2025}
+}`;
+      
+      navigator.clipboard.writeText(bibtex).then(() => {
+        // Show copy success message
+        const button = event.target.closest('button');
+        const originalText = button.innerHTML;
+        button.innerHTML = '<i class="fas fa-check"></i><span>Copied</span>';
+        button.style.background = '#10b981';
+        
+        setTimeout(() => {
+          button.innerHTML = originalText;
+          button.style.background = 'var(--primary-color)';
+        }, 2000);
+      }).catch(err => {
+        console.error('Copy failed:', err);
+        alert('Copy failed, please copy manually');
+      });
+    }
 
-  <!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
-
-  <!-- End of Statcounter Code -->
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  </script>
 
 </body>
 

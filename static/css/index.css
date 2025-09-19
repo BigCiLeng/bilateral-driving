@@ -1,113 +1,36 @@
+/* 现代化论文主页样式 */
+
+/* 基础样式重置 */
+* {
+  box-sizing: border-box;
+}
+
 body {
-  font-family: 'Noto Sans', sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.6;
+  color: #1e293b;
+  background: #ffffff;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
 
-
-.footer .icon-link {
-    font-size: 25px;
-    color: #000;
-}
-
-.link-block a {
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
-
-.dnerf {
-  font-variant: small-caps;
-}
-
-
-.teaser .hero-body {
-  padding-top: 0;
-  padding-bottom: 3rem;
-}
-
-.teaser {
-  font-family: 'Google Sans', sans-serif;
-}
-
-
-.publication-title {
-}
-
-.publication-banner {
-  max-height: parent;
-
-}
-
-.publication-banner video {
-  position: relative;
-  left: auto;
-  top: auto;
-  transform: none;
-  object-fit: fit;
-}
-
-.publication-header .hero-body {
-}
-
-.publication-title {
-    font-family: 'Google Sans', sans-serif;
-}
-
-.publication-authors {
-    font-family: 'Google Sans', sans-serif;
-}
-
-.publication-venue {
-    color: #555;
-    width: fit-content;
-    font-weight: bold;
-}
-
-.publication-awards {
-    color: #ff3860;
-    width: fit-content;
-    font-weight: bolder;
-}
-
-.publication-authors {
-}
-
-.publication-authors a {
-   color: hsl(204, 86%, 53%) !important;
-}
-
-.publication-authors a:hover {
-    text-decoration: underline;
-}
-
-.author-block {
-  display: inline-block;
-}
-
-.publication-banner img {
-}
-
-.publication-authors {
-  /*color: #4286f4;*/
-}
-
+/* 保持原有视频比较功能的样式 */
 .publication-video {
-    position: relative;
-    width: 100%;
-    height: 0;
-    padding-bottom: 56.25%;
-
-    overflow: hidden;
-    border-radius: 10px !important;
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
+  overflow: hidden;
+  border-radius: 10px !important;
 }
 
 .publication-video iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-.publication-body img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .results-carousel {
@@ -129,43 +52,7 @@ body {
   background: #000000;
 }
 
-.eql-cntrb { 
-  font-size: smaller;
-}
-
-
-
-div.background_video_header {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 1.3em;
-  min-height: 350px;
-  width: 100%;
-}
-
-div.background_video_header video {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  z-index: -100;
-  background-size: cover;
-  overflow: hidden;
-}
-
-div.video_2 {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  /* padding-left: 2%; */
-  /* padding-right: 2%; */
-}
-
+/* 视频容器样式 */
 div.video_container {
   display: grid;
 }
@@ -189,10 +76,6 @@ div.video_container div.caption {
   padding: 0;
 }
 
-/* div.video_container:hover div.caption {
-  background-color: rgba(0, 0, 0, 0.8);
-} */
-
 div.video_container div.caption div {
   margin: 0 auto;
   display: none;
@@ -202,10 +85,6 @@ div.video_container div.caption div {
   text-align: center;
   color: white;
 }
-
-/* div.video_container:hover div.caption div {
-  display: block;
-} */
 
 div.video_container_hover {
   display: grid;
@@ -248,10 +127,12 @@ div.video_container_hover:hover div.caption div {
   display: block;
 }
 
-video {
+/* 视频包装器 */
+div.video_wrapper {
   width: 100%;
 }
 
+/* 响应式视频布局 */
 @media (hover: none) {
   div.mobileonly {
     display: block;
@@ -265,7 +146,6 @@ video {
     width: 100%;
   }
 }
-
 
 @media (hover: hover) {
   div.mobileonly {
@@ -281,11 +161,369 @@ video {
   }
 }
 
-
+/* 标题图标 */
 .title-icon {
-  height: 1em; /* 让图标高度大致等于文字高度 */
-  width: auto; /* 保持宽高比 */
-  vertical-align: middle; /* 尝试让图标和文字垂直居中对齐 */
-  margin-right: 10px; /* 在图标和文字之间添加一些间距 */
-  /* 您可能需要微调这些值以达到最佳效果 */
+  height: 1em;
+  width: auto;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+/* 链接样式 */
+.link-block a {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.footer .icon-link {
+  font-size: 25px;
+  color: #000;
+}
+
+/* 作者相关样式 */
+.author-block {
+  display: inline-block;
+}
+
+.eql-cntrb { 
+  font-size: smaller;
+}
+
+/* 视频样式 */
+video {
+  width: 100%;
+}
+
+/* 背景视频头部 */
+div.background_video_header {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.3em;
+  min-height: 350px;
+  width: 100%;
+}
+
+div.background_video_header video {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  background-size: cover;
+  overflow: hidden;
+}
+
+div.video_2 {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* 性能优化 */
+.video {
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* 加载状态 */
+.video-loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  z-index: 10;
+}
+
+/* 平滑过渡 */
+* {
+  transition: all 0.3s ease;
+}
+
+/* 优化字体渲染 */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* 视频网格优化 */
+.video-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+/* 视频容器优化 */
+.video-container {
+  position: relative;
+  background: #000;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  transition: all 0.3s ease;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0;
+  line-height: 0;
+}
+
+/* Single video container - no width restrictions */
+#current-video-container {
+  max-width: none !important;
+  width: 100% !important;
+}
+
+.video-container video {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: auto;
+  display: block;
+  background: #000;
+}
+
+.video-container canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  pointer-events: auto;
+}
+
+/* Teaser video specific styles */
+.teaser-video {
+  overflow: visible;
+  padding: 0;
+  line-height: 0;
+  position: relative;
+  max-width: 100%;
+  height: auto;
+}
+
+.teaser-video video {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: #000;
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+}
+
+.teaser-video canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  pointer-events: auto;
+}
+
+/* Video switcher styles */
+.dataset-selector {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+}
+
+.dataset-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--bg-secondary);
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dataset-btn:hover {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+  transform: translateY(-2px);
+}
+
+.dataset-btn.active {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+.video-selector {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 1.5rem 0;
+  flex-wrap: wrap;
+}
+
+.video-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.video-btn:hover {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+.video-btn.active {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+.single-video-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 20px;
+  margin-bottom: 3rem;
+}
+
+.single-video-container .video-container {
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+  width: 100%;
+  overflow: visible;
+  height: auto;
+}
+
+.single-video-container .video-container video {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: auto;
+  display: block;
+  background: #000;
+  transform: scaleY(2);
+  transform-origin: top;
+}
+
+.video-container:hover {
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  transform: translateY(-4px);
+}
+
+/* 标签页样式优化 */
+.tab-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  background: #f8fafc;
+  padding: 0.5rem;
+  border-radius: 12px;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+
+.tab-button {
+  padding: 0.75rem 1.5rem;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.tab-button.active {
+  background: #2563eb;
+  color: white;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+
+.tab-button:hover:not(.active) {
+  background: #f1f5f9;
+  color: #1e293b;
+}
+
+/* 响应式优化 */
+@media (max-width: 768px) {
+      .video-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      
+      .video-container {
+        max-width: 100%;
+        margin: 0;
+      }
+      
+      .video-container video {
+        min-height: 250px;
+      }
+      
+      .dataset-selector {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+      }
+      
+      .dataset-btn {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+      }
+      
+      .video-selector {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      
+      .video-btn {
+        width: 100%;
+        max-width: 250px;
+        justify-content: center;
+      }
+  
+  .tab-container {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .tab-button {
+    text-align: center;
+  }
+}
+
+/* 打印样式 */
+@media print {
+  .tab-container,
+  .video-container {
+    display: none;
+  }
+  
+  body {
+    font-size: 12pt;
+    line-height: 1.4;
+  }
 }
