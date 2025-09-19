@@ -239,11 +239,11 @@ python tools/render.py \
     <td rowspan="2">preprocessed data</td>
     <td rowspan="2"><a href="https://1drv.ms/u/c/3121518754b90314/EbXMuvEABFJBs9YWkjaZ1v4BT8lJO_-9jwlF0dFsnyY2ww?e=7MVprz">Onedrive</a></td>
     <td>pretrained models (3cams)</td>
-    <td><a href="https://1drv.ms/u/c/3121518754b90314/EUiCUpn_yNBPn503ACW9JZ4BvjQ-7Bt-sdPzVK74rBGxSw?e=v7yZDp">Google Drive</a></td>
+    <td><a href="https://1drv.ms/u/c/3121518754b90314/EUiCUpn_yNBPn503ACW9JZ4BvjQ-7Bt-sdPzVK74rBGxSw?e=v7yZDp">Onedrive</a></td>
   </tr>
   <tr>
     <td>pretrained models (6cams)</td>
-    <td><a href="https://1drv.ms/u/c/3121518754b90314/ER4JaBD1xVdApbdwbIX-X1oB9iUclMNKcvt_SyCbfsNbww?e=uR6DLc">Google Drive</a></td>
+    <td><a href="https://1drv.ms/u/c/3121518754b90314/ER4JaBD1xVdApbdwbIX-X1oB9iUclMNKcvt_SyCbfsNbww?e=uR6DLc">Onedrive</a></td>
   </tr>
 
   <tr>
@@ -251,11 +251,11 @@ python tools/render.py \
     <td rowspan="2">preprocessed data</td>
     <td rowspan="2"><a href="https://1drv.ms/u/c/3121518754b90314/EQlVLB7_repFnAAYfLc7ZnUBLMg77z-siYq0s0oKcetGSg?e=gpXuzc">Onedrive</a></td>
     <td>pretrained models (3cams)</td>
-    <td><a href="https://1drv.ms/u/c/3121518754b90314/EVx4-8cJW_FPvm9-hMgjBtQBHSSFbS1SPa2fMXZHhKermw?e=h2WNhU">Google Drive</a></td>
+    <td><a href="https://1drv.ms/u/c/3121518754b90314/EVx4-8cJW_FPvm9-hMgjBtQBHSSFbS1SPa2fMXZHhKermw?e=h2WNhU">Onedrive</a></td>
   </tr>
   <tr>
     <td>pretrained models (5cams)</td>
-    <td><a href="https://1drv.ms/u/c/3121518754b90314/Ebcl2nzNLzVDgbNUOYCJ1VUBf3WdTuMsu58EjMFTof_d_A?e=upd0N0">Google Drive</a></td>
+    <td><a href="https://1drv.ms/u/c/3121518754b90314/Ebcl2nzNLzVDgbNUOYCJ1VUBf3WdTuMsu58EjMFTof_d_A?e=upd0N0">Onedrive</a></td>
   </tr>
 
   <tr>
@@ -263,11 +263,11 @@ python tools/render.py \
     <td rowspan="2">preprocessed data</td>
     <td rowspan="2"><a href="https://1drv.ms/u/c/3121518754b90314/EW7xTaKEhKRDrq09H2-u6IABNPLOTycG5GNFre_A58NKHg?e=fefNbo">Onedrive</a></td>
     <td>pretrained models (3cams)</td>
-    <td><a href="https://1drv.ms/u/c/3121518754b90314/EZBm-znrQ7JGme0Sv1eeOKUBEN0tiW4BpIu8dTpHmpWOOQ?e=EiVvfU">Google Drive</a></td>
+    <td><a href="https://1drv.ms/u/c/3121518754b90314/EZBm-znrQ7JGme0Sv1eeOKUBEN0tiW4BpIu8dTpHmpWOOQ?e=EiVvfU">Onedrive</a></td>
   </tr>
   <tr>
     <td>pretrained models (6cams)</td>
-    <td><a href="https://1drv.ms/u/c/3121518754b90314/EYvqRvPP-qdPgeTQvwbPPXUBiWwDJ2Ox71JuTJaNlDj7ow?e=YBGTWW">Google Drive</a></td>
+    <td><a href="https://1drv.ms/u/c/3121518754b90314/EYvqRvPP-qdPgeTQvwbPPXUBiWwDJ2Ox71JuTJaNlDj7ow?e=YBGTWW">Onedrive</a></td>
   </tr>
 
   <tr>
@@ -275,11 +275,11 @@ python tools/render.py \
     <td rowspan="2">preprocessed data</td>
     <td rowspan="2"><a href="https://1drv.ms/u/c/3121518754b90314/EZzuCAudnKxCq8tX7h91qj0BOaKEsHlv3SVzlXnPYeTXJg?e=SFRz3C">Onedrive</a></td>
     <td>pretrained models (3cams)</td>
-    <td><a href="https://1drv.ms/u/c/3121518754b90314/EWKNjaxqHKhHq2s_afuNv7QB_bzgqAfvZk-4GC7YLhKcLQ?e=0owtJg">Google Drive</a></td>
+    <td><a href="https://1drv.ms/u/c/3121518754b90314/EWKNjaxqHKhHq2s_afuNv7QB_bzgqAfvZk-4GC7YLhKcLQ?e=0owtJg">Onedrive</a></td>
   </tr>
   <tr>
     <td>pretrained models (7cams)</td>
-    <td><a href="https://1drv.ms/u/c/3121518754b90314/EbMDXidf09dPkFiORTZBqgUBsAgwxyq1eXIGx-ZMTJ8zxQ?e=FsUDNy">Google Drive</a></td>
+    <td><a href="https://1drv.ms/u/c/3121518754b90314/EbMDXidf09dPkFiORTZBqgUBsAgwxyq1eXIGx-ZMTJ8zxQ?e=FsUDNy">Onedrive</a></td>
   </tr>
 </table>
 
