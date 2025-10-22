@@ -493,9 +493,9 @@ class BasicTrainer(nn.Module):
         outputs["rgb_sky_blend"] = outputs["rgb_sky"] * (1.0 - outputs["opacity"])
         
         # affine transformation
-        outputs["rgb"] = self.affine_transformation(
-            outputs["rgb_gaussians"] + outputs["rgb_sky"] * (1.0 - outputs["opacity"]), image_infos
-        )
+        original_rgb = outputs["rgb_gaussians"] + outputs["rgb_sky"] * (1.0 - outputs["opacity"])
+        outputs["rgb"] = self.affine_transformation(original_rgb, image_infos)
+        outputs["original_rgb"] = original_rgb
         
         return outputs
     
@@ -627,7 +627,8 @@ class BasicTrainer(nn.Module):
                     })
             elif self.model_config.Affine.type == 'models.modules.MultiScaleBilateralAffineTransform':
                 loss_affine = self.models['Affine'].tv_loss()
-                loss_cicle = self.models['Affine'].inverse_loss(gt_rgb, predicted_rgb)
+                original_rgb = outputs["original_rgb"] * valid_loss_mask[..., None]
+                loss_cicle = self.models['Affine'].inverse_loss(gt_rgb, original_rgb)
                 loss_grid = affine_reg.w * loss_affine + affine_reg.w1 * loss_cicle
                 loss_dict.update({
                     "affine_loss": loss_grid
