@@ -403,7 +403,7 @@ def combine_matrix(H, W, matrix_list):
             align_corners=False
         ).permute(0, 2, 3, 1).view(1, H, W, 3, 4)
         hom_arr = affine_to_homogeneous_batch(arr_full)
-        mat = hom_arr * mat
+        mat = hom_arr @ mat
 
     return mat
 def fill_matrix_res(H, W, matrix):
@@ -478,7 +478,7 @@ class MultiScaleBilateralAffineTransform(nn.Module):
         mat = torch.eye(4, device=self.device).view(1, 1, 1, 4, 4).repeat(1, H, W, 1, 1)
         for arr in self.save_matrix:
             hom_arr = affine_to_homogeneous_batch(arr)
-            mat = hom_arr * mat
+            mat = hom_arr @ mat
         
         flattened = mat.view(-1, 4, 4)
         inverses = torch.inverse(flattened).view(B, H, W, 4, 4)
