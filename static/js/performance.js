@@ -72,7 +72,7 @@
       if (container) {
         const loading = container.querySelector('.video-loading');
         if (loading) {
-          loading.style.display = 'block';
+          loading.style.display = 'flex';
         }
       }
     }
@@ -252,12 +252,16 @@
     // 将视频管理器暴露到全局作用域
     window.videoManager = videoManager;
 
+    // 预加载关键演示组，确保交互视频可用
+    videoManager.preloadGroupVideos('challenge-demos');
+
     // 添加清理任务
     memoryManager.addCleanupTask(() => {
       // 清理未使用的视频元素
       const videos = document.querySelectorAll('video');
       videos.forEach(video => {
-        if (video.paused && video.readyState >= 2) {
+        const isInteractive = video.hasAttribute('controls');
+        if (!isInteractive && video.paused && video.readyState >= 2) {
           video.src = '';
           video.load();
         }

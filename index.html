@@ -193,6 +193,14 @@
       opacity: 0.9;
     }
 
+    .hero-summary {
+      font-size: clamp(1rem, 2vw, 1.1rem);
+      color: #e2e8f0;
+      line-height: 1.7;
+      margin: 1.5rem auto 2.5rem;
+      max-width: 780px;
+    }
+
     /* 按钮组 */
     .button-group {
       display: flex;
@@ -323,6 +331,114 @@
       margin: 2rem 0;
     }
 
+    .section-lead {
+      text-align: center;
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      margin: 0.5rem auto 2rem;
+      max-width: 780px;
+      line-height: 1.8;
+    }
+
+    .overview-grid {
+      display: grid;
+      gap: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .overview-item {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .video-meta {
+      text-align: left;
+    }
+
+    .video-meta h3 {
+      margin: 0;
+      font-size: 1.2rem;
+      color: var(--text-primary);
+      font-weight: 700;
+    }
+
+    .video-meta p {
+      margin: 0.6rem 0 0;
+      font-size: 0.98rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .challenge-grid {
+      display: grid;
+      gap: 1.75rem;
+    }
+
+    @media (min-width: 768px) {
+      .challenge-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .challenge-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    .challenge-card {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding: 1.2rem;
+      border-radius: 14px;
+      border: 1px solid var(--border-color);
+      background: var(--bg-primary);
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .challenge-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .challenge-caption h3 {
+      margin: 0;
+      font-size: 1.05rem;
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .challenge-caption p {
+      margin: 0.6rem 0 0;
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .challenge-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .challenge-tags li {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      background: var(--bg-accent);
+      border: 1px solid var(--border-color);
+      letter-spacing: 0.01em;
+    }
+
     .video-container {
       position: relative;
       background: #000;
@@ -335,6 +451,22 @@
     .video-container:hover {
       box-shadow: var(--shadow-lg);
       transform: translateY(-4px);
+    }
+
+    .video-loading {
+      position: absolute;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(15, 23, 42, 0.4);
+      color: #fff;
+      pointer-events: none;
+    }
+
+    .video-loading .loading {
+      border-color: rgba(255, 255, 255, 0.4);
+      border-top-color: #fff;
     }
 
     /* 视频容器大小调整 */
@@ -489,13 +621,15 @@
 
 <body>
   <!-- Navigation -->
-  <nav class="nav-modern">
+  <nav class="nav-modern" aria-label="Primary">
     <div class="container-modern">
       <div class="nav-content">
-        <ul class="nav-links">
+        <ul class="nav-links" role="list">
+          <li><a href="#overview" class="nav-link">Overview</a></li>
           <li><a href="#abstract" class="nav-link">Abstract</a></li>
           <li><a href="#framework" class="nav-link">Framework</a></li>
-          <li><a href="#videos" class="nav-link">Video Demos</a></li>
+          <li><a href="#video_gallery_1_title" class="nav-link">Comparisons</a></li>
+          <li><a href="#challenge-demos" class="nav-link">Challenging Scenes</a></li>
           <li><a href="#bibtex" class="nav-link">Citation</a></li>
         </ul>
       </div>
@@ -542,7 +676,15 @@
           <br><small><i class="fas fa-envelope"></i> Corresponding Author</small>
         </div>
 
+        <!-- <p class="hero-summary">
+          Key strengths: multi-scale bilateral fusion · lighting-robust reconstructions · nuScenes/Waymo/Argoverse/PandaSet ready.
+        </p> -->
+
         <div class="button-group">
+          <a href="#overview" class="btn-modern">
+            <i class="fas fa-play-circle"></i>
+            <span>Watch Overview</span>
+          </a>
           <a href="static/bilateral-driving-arxiv.pdf" target="_blank" class="btn-modern btn-primary">
             <i class="fas fa-file-pdf"></i>
             <span>Paper</span>
@@ -579,15 +721,64 @@
     </div>
   </section>
 
-  <!-- Demo Video -->
-  <section class="content-section" id="videos">
+  <!-- Overview Videos -->
+  <section class="content-section" id="overview">
     <div class="container-modern">
       <div class="fade-in">
-        <h2 class="section-title">Teaser Video</h2>
+        <h2 class="section-title">Project Overview</h2>
+        <p class="section-lead">
+          Explore how bilateral grids and appearance codes come together for photometrically consistent driving-scene rendering.
+        </p>
         <div class="card-modern">
-          <div class="video-container teaser-video" style="max-width: 750px; margin: 0 auto;">
-            <video class="video" id="banner" loop playsinline muted preload="metadata" src="static/videos/teaser.mp4" onplay="resizeAndPlay3(this)" onloadedmetadata="this.style.height='auto'; this.style.display='block';"></video>
-            <canvas class="videoMerge" id="bannerMerge3"></canvas>
+          <div class="overview-grid">
+            <article class="overview-item">
+              <div class="video-container">
+                <video
+                  class="video"
+                  id="intro-video"
+                  controls
+                  preload="metadata"
+                  data-src="static/videos/intro/bilateraldriving-intro.mp4"
+                  playsinline
+                  aria-label="Bilateral Driving introduction video">
+                </video>
+                <div class="video-loading" aria-hidden="true">
+                  <span class="loading" aria-hidden="true"></span>
+                </div>
+              </div>
+              <div class="video-meta">
+                <h3>Introduction</h3>
+                <p>
+                  Five-minute walkthrough of the bilateral-grid pipeline, training setup, and deployment across nuScenes, Waymo, Argoverse, and PandaSet.
+                </p>
+              </div>
+            </article>
+
+            <article class="overview-item">
+              <div class="video-container teaser-video">
+                <video
+                  class="video"
+                  id="banner"
+                  loop
+                  playsinline
+                  muted
+                  preload="metadata"
+                  src="static/videos/teaser.mp4"
+                  onplay="resizeAndPlay3(this)"
+                  onloadedmetadata="this.style.height='auto'; this.style.display='block';">
+                </video>
+                <canvas class="videoMerge" id="bannerMerge3"></canvas>
+                <div class="video-loading" aria-hidden="true">
+                  <span class="loading" aria-hidden="true"></span>
+                </div>
+              </div>
+              <div class="video-meta">
+                <h3>Teaser</h3>
+                <p>
+                  Quick side-by-side comparisons highlighting sharper geometry, denser occupancy, and lighting robustness versus Omnire.
+                </p>
+              </div>
+            </article>
           </div>
         </div>
       </div>
@@ -622,6 +813,165 @@
                 We unify appearance codes with multi-scale bilateral grids. Initially, a coarse rendering is obtained from a Gaussian scene graph. This rendered image is then processed by our multi-scale bilateral grids to perform detailed per-pixel color modeling, guided by a luminance-based map through slice and fusion operations.
               </p>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Challenge Scenes Section -->
+  <section class="content-section" id="challenge-demos" style="background: var(--bg-secondary);">
+    <div class="container-modern">
+      <div class="fade-in">
+        <h2 class="section-title">Challenging Scene Demos</h2>
+        <p class="section-lead">
+          Stress-test scenarios that showcase robustness to lighting, reflections, and severe photometric shifts.
+        </p>
+        <div class="card-modern">
+          <div class="challenge-grid">
+            <article class="challenge-card">
+              <div class="video-container">
+                <video
+                  class="video"
+                  controls
+                  preload="metadata"
+                  playsinline
+                  data-src="static/videos/challenge_scenes/nighttime_scene.mp4"
+                  aria-label="Nighttime driving reconstruction with strong headlight glare">
+                </video>
+                <div class="video-loading" aria-hidden="true">
+                  <span class="loading" aria-hidden="true"></span>
+                </div>
+              </div>
+              <div class="challenge-caption">
+                <h3>Nighttime Scene</h3>
+                <!-- <p>Maintains geometry in ultra-low light while suppressing headlight-induced flare artifacts.</p> -->
+              </div>
+              <!-- <ul class="challenge-tags">
+                <li>Low-light</li>
+                <li>Headlight glare</li>
+              </ul> -->
+            </article>
+
+            <article class="challenge-card">
+              <div class="video-container">
+                <video
+                  class="video"
+                  controls
+                  preload="metadata"
+                  playsinline
+                  data-src="static/videos/challenge_scenes/rainy_road.mp4"
+                  aria-label="Rainy road reconstruction demo">
+                </video>
+                <div class="video-loading" aria-hidden="true">
+                  <span class="loading" aria-hidden="true"></span>
+                </div>
+              </div>
+              <div class="challenge-caption">
+                <h3>Rainy Road</h3>
+                <!-- <p>Handles reflective puddles and motion blur without introducing color smearing.</p> -->
+              </div>
+              <!-- <ul class="challenge-tags">
+                <li>Wet surfaces</li>
+                <li>Motion blur</li>
+              </ul> -->
+            </article>
+
+            <article class="challenge-card">
+              <div class="video-container">
+                <video
+                  class="video"
+                  controls
+                  preload="metadata"
+                  playsinline
+                  data-src="static/videos/challenge_scenes/Reflective_car_exterior.mp4"
+                  aria-label="Reflective car exterior reconstruction demo">
+                </video>
+                <div class="video-loading" aria-hidden="true">
+                  <span class="loading" aria-hidden="true"></span>
+                </div>
+              </div>
+              <div class="challenge-caption">
+                <h3>Reflective Exterior</h3>
+                <!-- <p>Captures specular highlights on vehicle bodies while preserving color fidelity.</p> -->
+              </div>
+              <!-- <ul class="challenge-tags">
+                <li>Specularities</li>
+                <li>Color fidelity</li>
+              </ul> -->
+            </article>
+
+            <article class="challenge-card">
+              <div class="video-container">
+                <video
+                  class="video"
+                  controls
+                  preload="metadata"
+                  playsinline
+                  data-src="static/videos/challenge_scenes/shadow1.mp4"
+                  aria-label="Shadow-dominant reconstruction demo one">
+                </video>
+                <div class="video-loading" aria-hidden="true">
+                  <span class="loading" aria-hidden="true"></span>
+                </div>
+              </div>
+              <div class="challenge-caption">
+                <h3>Deep Shadows I</h3>
+                <!-- <p>Keeps object boundaries crisp as scenes transition from bright sky into dense shade.</p> -->
+              </div>
+              <!-- <ul class="challenge-tags"> -->
+                <!-- <li>High contrast</li>
+                <li>Shadow detail</li> -->
+              <!-- </ul> -->
+            </article>
+
+            <article class="challenge-card">
+              <div class="video-container">
+                <video
+                  class="video"
+                  controls
+                  preload="metadata"
+                  playsinline
+                  data-src="static/videos/challenge_scenes/shadow2.mp4"
+                  aria-label="Shadow-dominant reconstruction demo two">
+                </video>
+                <div class="video-loading" aria-hidden="true">
+                  <span class="loading" aria-hidden="true"></span>
+                </div>
+              </div>
+              <div class="challenge-caption">
+                <h3>Deep Shadows II</h3>
+                <!-- <p>Prevents floaters when oscillating between dark tunnels and sunlit openings.</p> -->
+              </div>
+              <!-- <ul class="challenge-tags">
+                <li>Dynamic range</li>
+                <li>Temporal stability</li>
+              </ul> -->
+            </article>
+
+            <article class="challenge-card">
+              <div class="video-container">
+                <video
+                  class="video"
+                  controls
+                  preload="metadata"
+                  playsinline
+                  data-src="static/videos/challenge_scenes/sun_flare.mp4"
+                  aria-label="Sun flare reconstruction demo">
+                </video>
+                <div class="video-loading" aria-hidden="true">
+                  <span class="loading" aria-hidden="true"></span>
+                </div>
+              </div>
+              <div class="challenge-caption">
+                <h3>Sun Flare</h3>
+                <!-- <p>Mitigates lens flare washout, keeping lane markings and foreground assets visible.</p> -->
+              </div>
+              <!-- <ul class="challenge-tags"> -->
+                <!-- <li>Backlighting</li>
+                <li>Glare</li> -->
+              <!-- </ul> -->
+            </article>
           </div>
         </div>
       </div>
@@ -670,8 +1020,8 @@
             <div class="video-container" id="current-video-container">
               <video class="video" id="current-video" loop playsinline muted preload="metadata"></video>
               <canvas class="videoMerge" id="current-video-merge"></canvas>
-              <div class="video-loading" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; display: none;">
-                <div class="loading"></div>
+              <div class="video-loading" aria-hidden="true">
+                <span class="loading" aria-hidden="true"></span>
               </div>
             </div>
           </div>
