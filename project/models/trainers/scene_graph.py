@@ -289,9 +289,9 @@ class MultiTrainer(BasicTrainer):
         outputs["rgb_sky_blend"] = outputs["rgb_sky"] * (1.0 - outputs["opacity"])
         
         # affine transformation
-        outputs["rgb"] = self.affine_transformation(
-            outputs["rgb_gaussians"] + outputs["rgb_sky"] * (1.0 - outputs["opacity"]), image_infos
-        )
+        original_rgb = outputs["rgb_gaussians"] + outputs["rgb_sky"] * (1.0 - outputs["opacity"])
+        outputs["rgb"] = self.affine_transformation(original_rgb, image_infos)
+        outputs["original_rgb"] = original_rgb
         
         if not self.training and self.render_each_class:
             with torch.no_grad():
